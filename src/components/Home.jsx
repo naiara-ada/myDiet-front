@@ -2,12 +2,14 @@ import { signInWithEmailAndPassword } from "firebase/auth";
 import { useState } from "react";
 import { auth } from '../config/firebase.js';
 import { useNavigate } from "react-router-dom";
+import { useDiet } from "../context/DietContext.jsx";
 
 function Home (){
     const [inputEmail, setInputEmail] = useState('');
     const [inputPassword, setInputPassword] = useState('');
-    const urlLogin = import.meta.env.VITE_LOGIN;
     const navigate = useNavigate();
+    const {token, loginToken} = useDiet();
+    console.log('token 1 antes de login',token)
     
     const signInEmail = async (e)=>{
     e.preventDefault();
@@ -16,16 +18,13 @@ function Home (){
 
         const userCredential = await signInWithEmailAndPassword(auth, inputEmail, inputPassword)
         const user = userCredential.user
-        const token = await user.getIdToken();
-
-        const response = await fetch(urlLogin, {
-            method : 'POST',
-            headers: {              
-               authorization : 'Bearer ' + token
-            },           
-          })
+        const ptoken = await user.getIdToken();
+        console.log(ptoken)
+        loginToken(ptoken);
+        console.log('token 2 de login', token)
+        
         //miramos si el correo es el administrador para ir a una sección u otra
-        user.email === import.meta.env.VITE_EMAILADMIN ? navigate('/dashboard') : navigate('/user')
+        user.email === import.meta.env.VITE_EMAILADMIN ? navigate('/dashboard', {state:{vtoken:ptoken}} ) : navigate('/user')
 
 
         
