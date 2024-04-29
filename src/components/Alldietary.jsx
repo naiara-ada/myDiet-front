@@ -1,7 +1,8 @@
-import { useParams, } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useDiet } from "../context/DietContext.jsx";
-
+import Header from "./Header.jsx";
+import {fetchData} from '../middleware/middleware.js' //llama al back para traer los datos
 
 function Alldietary (){
     const {token} = useDiet();
@@ -12,35 +13,26 @@ function Alldietary (){
     console.log('urldiet', urlDiet)
     const [data, setData] = useState(null)
 
-    const fetchData = async() =>{
-        try {
-            const response = await fetch(urlDiet,{
-                headers:{
-                    authorization: 'Bearer ' + token
-                }                
-            });
-            console.log(response)
-            const resData = await response.json();
-            console.log('resData alldietary', resData)
-            setData(JSON.parse(resData));   
-            
-        } catch (error) {
-            console.log(error)
-        }
+    const callFetchData = async () =>{
+        const resData = await fetchData(token, urlDiet)
+        setData(resData)
     }
 
     useEffect(() => {
-        fetchData()
+        callFetchData()
       }, [])
 
     return(
         <>
+            <Header id={id}/>
             <h1>Alldietary</h1>
             <ul>
             {data === null
              ? (<div>cargando...</div>)
              : (data.map(item =>(
-                <li key={item.idPlan}>{item.nombre}</li>
+                <li key={item.idPlan}>
+                    <Link to={`${item.idPlan}`}>{item.nombre}</Link>
+                </li>
             )))
             }
 

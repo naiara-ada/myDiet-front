@@ -5,53 +5,37 @@ import Home from '../components/Home.jsx'
 import Dashboard from '../components/Dashboard.jsx';
 import User from '../components/User.jsx';
 import Alldietary from '../components/Alldietary.jsx';
-import Mytracking from '../components/Mytraking.jsx';
+import Mytracking from '../components/Mytracking.jsx';
 import MyAgenda from '../components/MyAgenda.jsx';
 import Header from '../components/Header.jsx';
+import Dietary from '../components/Dietary.jsx';
+import GetUsers from '../components/GetUsers.jsx';
+import NewUser from '../components/NewUser.jsx';
+import GetRecipes from '../components/GetRecipes.jsx';
+import UserTracking from '../components/UserTraking.jsx';
 
 
 function RoutesApp (){
-      const urlDiet = import.meta.env.VITE_URL
-      const [data, setData] = useState(null)
-           
-      const fetchData = async () =>{
-            try {
-                  const response = await fetch(urlDiet);
-                  const resData = await response.json();
-                  
-                  setData(JSON.parse(resData));
-                  
-                  
-
-
-            } catch (error) {
-                  console.log(error)
-            }
-      }
-
-      useEffect(() => {
-            fetchData()
-          }, [])
-
-              
+                      
     return (
         <Router>
-           <div> 
-                  
-                  {data === null 
-                  ? (<h2>cargando...</h2>)
-                  :  
+           <div>                                                
+            <Routes>
+                  <Route path="/" element={<Home />} />
+                  <Route path="/user" element={<User />} />
+                  <Route path="/dashboard" element={<Dashboard />} /> 
+                  <Route path={`/user/:id/alldietary/`} element={<Alldietary />} />
+                  <Route path={`/user/:id/alldietary/:id_plan`} element={<Dietary />} />                         
+                  <Route path={`/user/:id/mytracking/`} element={<Mytracking />} />
+                  <Route path={`/user/:id/myagenda/`} element={<MyAgenda />} />
+                  <Route path={`/dashboard/users`} element={<GetUsers />} />
+                  <Route path={`/dashboard/users/:id`} element={<UserTracking />} />
+                  <Route path='/dashboard/recipes' element={<GetRecipes />} />
+                  <Route path={`/dashboard/users/newuser`} element={<NewUser />} />
+
+                                                      
+            </Routes>
                         
-                        <Routes>
-                        <Route path="/" element={<Home />} />
-                        <Route path="/user" element={<User />} />
-                        <Route path="/dashboard" element={<Dashboard />} /> 
-                        <Route path={`/user/:id/alldietary/`} element={<Alldietary />} />                         
-                        <Route path={`/user/:id/mytracking/`} element={<Mytracking />} />
-                        <Route path={`/user/:id/myagenda/`} element={<MyAgenda />} />
-                                                                  
-                        </Routes>
-                        }
 
             </div>
             </Router>

@@ -41,8 +41,14 @@
   color: #888;
 }
 
+.navClass{
+  display: flex;
+  gap:10px
+}
+
 .btnContainer{
   display: flex;
+  justify-content: center;
   gap: 20px;
   
 }
@@ -63,5 +69,76 @@ box-shadow: 10px 10px 5px 0px rgba(182,214,255,1);
 }
 .linkClass{
   color:white;
+}
+
+.fondoModal{
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(255, 255, 255, 0.476);
+    backdrop-filter: blur(4px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal{
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  width: 500px;
+  opacity: 1;
+   
+  
+}
+
+.botonModal{
+  align-self: flex-end;
+}
+
+.textModal {
+  background-color: rgb(79 70 229);/* Este color corresponde a bg-indigo-600 */
+  border-radius: 0.75rem; /* Este valor corresponde a rounded-xl */
+  padding: 2.5rem 5rem; /* Estos valores corresponden a px-20 y py-10 */
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem; /* Este valor corresponde a gap-5 */
+  align-items: center; /* Este valor corresponde a items-center */
+  margin: 0 1rem; /* Estos valores corresponden a mx-4 */
+  color: white;
+  opacity: 0.9; 
+}
+
+.containerTracking{
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.containerGrid{
+  display: flex;
+  flex-direction: column;
+  gap:10px;
+}
+
+.containerRecipes{
+  display: flex;
+  align-items: center;
+  height: 75px; 
+  border-bottom: 1px solid #1432ff; 
+  padding-bottom: 5px;
+}
+
+.containerRecipes textarea{
+  border: none;
+  height: 70px;
+  width: 250px;
+}
+
+.containerRecipes input{
+  border: none;
+  width: 25px;
 }
 

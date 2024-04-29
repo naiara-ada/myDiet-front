@@ -1,13 +1,21 @@
 import {Link} from 'react-router-dom'
-function Header (){
+import { useDiet } from '../context/DietContext.jsx'
+import { useLocation, useParams } from 'react-router-dom';
 
-
+function Header ({id}){
+    const urlactual = useLocation();
     return(
         <>
-            <Link  to='/'>HOME</Link>
-            <Link  to='/user/:id/alldietary'>Mis Dietas</Link>
-            <Link  to='/user/:id/mytracking'>Mi seguimiento</Link>
-            <Link  to='/user/:id/myagenda'>Mi agenda</Link>
+            {urlactual.pathname !== '/' && (
+                <nav className='navClass'>
+                    <Link  to='/'>HOME</Link>
+                    <Link to={`/user/${id}/alldietary`}>Mis Dietas</Link>
+                    <Link  to={`/user/${id}/mytracking`}>Mi seguimiento</Link>
+                    <Link  to={`/user/${id}/myagenda`}>Mi agenda</Link>
+                </nav>
+            )}
+            
+            
         </>
 
     )
