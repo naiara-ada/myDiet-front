@@ -9,8 +9,7 @@ function Home (){
     const [inputPassword, setInputPassword] = useState('');
     const navigate = useNavigate();
     const {token, loginToken} = useDiet();
-    console.log('token 1 antes de login',token)
-    
+        
     const signInEmail = async (e)=>{
     e.preventDefault();
 
@@ -19,10 +18,8 @@ function Home (){
         const userCredential = await signInWithEmailAndPassword(auth, inputEmail, inputPassword)
         const user = userCredential.user
         const ptoken = await user.getIdToken();
-        console.log(ptoken)
         loginToken(ptoken);
-        console.log('token 2 de login', token)
-        
+            
         //miramos si el correo es el administrador para ir a una sección u otra
         user.email === import.meta.env.VITE_EMAILADMIN ? navigate('/dashboard', {state:{vtoken:ptoken}} ) : navigate('/user')
 
