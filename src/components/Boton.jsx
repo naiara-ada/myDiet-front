@@ -4,7 +4,7 @@ function Boton ({id, url, text}){
    
     return(
         <div className='botonClass'>
-            <Link className='linkClass' to={url}>{text}</Link>        
+            <Link className='linkClass' to={url} state={{ text: text }}>{text}</Link>        
         </div>
     )
 }

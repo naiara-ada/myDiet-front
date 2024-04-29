@@ -25,19 +25,19 @@ ChartJS.register(
 
 
 
-function LineChart({data}) {
+function LineChart({data, citas, label}) {
     console.log('mydata en el chart', data)
+    console.log('mycitas en el chart', citas)
        
-    const dataPeso = data.weight
-    const citas = data.dates
+    
     
     
     const midata = {
         labels: citas,
         datasets:[ //cada una de las lineas del gráfico
             {
-                label: 'Peso',
-                data: dataPeso,
+                label: label,
+                data: data,
                 tension: 1,
                 fill: true,
                 boderColor: 'rgb(41, 115,212)',
@@ -52,8 +52,6 @@ function LineChart({data}) {
     const misoptions ={
         scales: {
             y: {
-                min : 40,
-                max : 100,
                 ticks: {color : '#568bff'}
             },
             x: {

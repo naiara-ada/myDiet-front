@@ -13,6 +13,7 @@ import GetUsers from '../components/GetUsers.jsx';
 import NewUser from '../components/NewUser.jsx';
 import GetRecipes from '../components/GetRecipes.jsx';
 import UserTracking from '../components/UserTraking.jsx';
+import NewRecipe from '../components/NewRecipe.jsx';
 
 
 function RoutesApp (){
@@ -31,6 +32,7 @@ function RoutesApp (){
                   <Route path={`/dashboard/users`} element={<GetUsers />} />
                   <Route path={`/dashboard/users/:id`} element={<UserTracking />} />
                   <Route path='/dashboard/recipes' element={<GetRecipes />} />
+                  <Route path='/dashboard/recipes/newrecipe' element={<NewRecipe />} />
                   <Route path={`/dashboard/users/newuser`} element={<NewUser />} />
 
                                                       

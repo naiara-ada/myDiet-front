@@ -1,7 +1,10 @@
 import { PencilLine } from 'lucide-react';
 import { useState, useRef} from 'react';
+import { useDiet } from "../context/DietContext.jsx";
+import { useNavigate } from "react-router-dom";
 
-function LineRecipe ({item}){
+function LineRecipe ({item, url}){
+    const {token} = useDiet();
     const [titulo, setTitulo] = useState(item.Titulo)
     const [ingredientes, setIngredientes] = useState(item.Ingredientes);
     const [preparacion, setPreparacion] = useState(item.Preparacion);
@@ -9,12 +12,34 @@ function LineRecipe ({item}){
     const tituloRef = useRef();
     const ingredienteRef = useRef();
     const preparacionRef = useRef();
+    const navigate = useNavigate();
 
-    const handleUpdate = ()=>{
-        console.log('idREf', idRef.current.value)
-        console.log('tituloRef', tituloRef.current.value)
-        console.log('ingredienteRef', ingredienteRef.current.value)
-        console.log('preparacionRef', preparacionRef.current.value)
+    const handleUpdate = async ()=>{
+        const urlDiet = import.meta.env.VITE_URL+url
+        console.log(urlDiet)
+        const payload={ 
+            id: idRef.current.value,
+            Titulo: tituloRef.current.value,
+            Ingredientes: ingredienteRef.current.value,
+            Preparacion: preparacionRef.current.value
+         }
+         console.log(payload)
+        try {
+            const response = await fetch(urlDiet, {
+                method: 'PUT',
+                headers:{
+                    'Content-Type': 'application/json', 
+                     authorization: 'Bearer ' + token
+                },
+                body: JSON.stringify(payload)
+            })
+              
+            if(response.ok){
+                navigate('/dashboard/recipes');
+            }            
+        } catch (error) {
+            console.log(error)
+        }
     }
    
     return(
