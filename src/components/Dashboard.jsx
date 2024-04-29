@@ -7,6 +7,7 @@ function Dashboard (){
    
     return(
         <>
+        
         <h1>Dashboard</h1> 
         <div className="btnContainer">
             <Boton url='/dashboard/users' text='Mis Pacientes'/>

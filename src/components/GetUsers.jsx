@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { useDiet } from "../context/DietContext.jsx";
 import Boton from './Boton.jsx'
 import {Link} from 'react-router-dom'
+import HeaderAdmin from './HeaderAdmin.jsx';
 
 function GetUsers (){
     const {token} = useDiet();
@@ -21,6 +22,7 @@ function GetUsers (){
 
     return(
         <>
+        <HeaderAdmin />
         <h1>Mis Pacientes</h1>
         {data === null
         ? (<div>cargando...</div>)

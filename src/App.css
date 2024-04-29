@@ -112,6 +112,18 @@ box-shadow: 10px 10px 5px 0px rgba(182,214,255,1);
   opacity: 0.9; 
 }
 
+.formClass{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap:10px
+}
+
+.formRow{
+  display: flex;
+  gap: 10px;
+}
+
 .containerTracking{
   display: flex;
   flex-wrap: wrap;
@@ -135,6 +147,7 @@ box-shadow: 10px 10px 5px 0px rgba(182,214,255,1);
   border: none;
   height: 70px;
   width: 250px;
+  resize: none;
 }
 
 .containerRecipes input{

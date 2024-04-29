@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from '../config/firebase.js';
 import { useDiet } from "../context/DietContext.jsx";
