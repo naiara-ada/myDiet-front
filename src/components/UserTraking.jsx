@@ -1,4 +1,4 @@
-import { useParams, useLocation } from "react-router-dom";
+import { useParams, useLocation, Link } from "react-router-dom";
 import { useDiet } from "../context/DietContext.jsx";
 import { useState, useEffect } from "react";
 import LineChart from "./LineChart.jsx";
@@ -37,8 +37,9 @@ function UserTracking (){
         {data === null
          ? (<div>cargando...</div>)
          : (<div>
-            
+            <Link to='newtracking' state={{ text: nombre }}>Nuevo seguimiento</Link>
             <div className="containerTracking">
+            
             <div className="tracking">
                     <h3>Peso</h3>
                     <LineChart data={peso} citas={fechas} label='Peso'/>

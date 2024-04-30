@@ -48,6 +48,7 @@
 
 .btnContainer{
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   gap: 20px;
   
@@ -127,6 +128,12 @@ box-shadow: 10px 10px 5px 0px rgba(182,214,255,1);
 .containerTracking{
   display: flex;
   flex-wrap: wrap;
+  padding-bottom: 5px;
+  border-bottom: 1px solid #1432ff;
+  gap:5px;
+}
+.containerTracking input{
+  border:none;
 }
 
 .containerGrid{
