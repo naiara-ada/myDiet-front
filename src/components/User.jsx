@@ -16,8 +16,7 @@ function User (){
         setData(resData)
     }
 
-    useEffect(() => {
-       
+    useEffect(() => {       
        callFetchData()
       }, [])
 

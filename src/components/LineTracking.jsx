@@ -46,7 +46,6 @@ function LineTracking ({item}){
         } catch (error) {
             console.log(error)
         }
-
     }
 
     return(

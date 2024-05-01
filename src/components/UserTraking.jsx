@@ -19,8 +19,9 @@ function UserTracking (){
 
     const callFetchData = async () =>{
         const resData = await fetchData(token, urlDiet)
+        console.log(resData)
         setPeso(resData.map(item => parseFloat(item.Peso)));           
-        setFechas(resData.map(item => item.Fecha.substring(0,10)));       
+        setFechas(resData.map(item => item.Fecha.substring(0,10))); ///      
         setGrasa(resData.map(item => parseFloat(item.Grasa_Corporal)));
         
         setData(resData)

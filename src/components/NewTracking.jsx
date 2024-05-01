@@ -1,13 +1,15 @@
 import { useState, useEffect } from "react";
 import { useDiet } from "../context/DietContext.jsx";
-import { useParams, useLocation} from "react-router-dom";
+import { useParams, useLocation, useNavigate} from "react-router-dom";
 import {fetchData} from '../middleware/middleware.js'
 import LineTracking from "./LineTracking.jsx";
+import HeaderAdmin from "./HeaderAdmin.jsx";
 
 
 function NewTracking (){
     const {token} = useDiet();
     const {id} = useParams();
+    const navigate = useNavigate();
     const location = useLocation();
     const {text} = location.state;
     const [nombre, setNombre] = useState(text)
@@ -15,12 +17,13 @@ function NewTracking (){
     const [fecha, setFecha] = useState('')
     const [hora, setHora] = useState('');
     const [data, setData] = useState(null)
-    const urlDiet = import.meta.env.VITE_URL + `user/${id}/mytracking`
+    
 
     console.log('name', text)
     //const urlDiet = import.meta.env.VITE_URL + `dashboard/users/${id}/newtracking`
 
     const callFetchData = async()=>{
+        const urlDiet = import.meta.env.VITE_URL + `user/${id}/mytracking`
         const resData = await fetchData(token, urlDiet)
         console.log('resData', resData)
         setData(resData)
@@ -31,13 +34,38 @@ function NewTracking (){
        }, [])
 
     const handleSubmit = async(e)=>{
-        e.preventDefault()
+        const urlDiet = import.meta.env.VITE_URL + `dashboard/users/${id}/newtracking`
+        e.preventDefault();
+
+        try {
+            const payload={
+                Descripcion: descripcion,
+                Fecha: fecha,
+                Hora_de_la_Cita: hora
+            }
+            const response = await fetch(urlDiet,{
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json', 
+                    authorization: 'Bearer ' + token
+                },
+                body: JSON.stringify(payload)
+            })
+
+            if(response.ok){
+                console.log('ok guardado')
+                navigate(`dashboard/users/${id}`)
+            }            
+        } catch (error) {
+            console.log(error)
+        }
     }
 
 
 
     return(
         <>
+        <HeaderAdmin />
         <h3>Nuevo seguimiento {nombre} </h3>
         <div className="nt-top">
             <form onSubmit={handleSubmit} className="formClass">
@@ -75,8 +103,7 @@ function NewTracking (){
         <div className="nt-botton">
             <div className="containerGrid">
                 
-                {data !== null && (
-                        
+                {data !== null && (                        
                     data.map(item =>(
                         <LineTracking key={item.id} item={item}/>
                     ))

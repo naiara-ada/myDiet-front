@@ -7,7 +7,9 @@ export const fetchData = async (token, urlDiet) =>{
         });
         console.log(response)
         const resData = await response.json();
+        console.log('resdata middle', resData)
         const myData = JSON.parse(resData)
+        console.log('mydata midd', myData)
         return myData;      
 
         
