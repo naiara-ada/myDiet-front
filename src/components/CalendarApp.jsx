@@ -5,14 +5,14 @@ import 'dayjs/locale/es'
 
 dayjs.locale('es')
 
-function CalendarApp ({events}){
+function CalendarApp ({events, height, width}){
 
     const localizer = dayjsLocalizer(dayjs)
     console.log('events en calendar', events)
     
         return(
             <>
-                <div style={{height: '500px', width:'500px'}}>
+                <div style={{height: '400px', width:'400px'}}>
                     <Calendar 
                      localizer={localizer}
                      events={events}

@@ -10,6 +10,7 @@ function HeaderAdmin () {
                <Link to='/dashboard/users'>Mis Pacientes</Link>
                <Link to='/dashboard/recipes'>Recetas</Link>
                <Link to='/dashboard/diaries'>Diarios</Link>
+               <Link to='/dashboard/agenda'>Agenda</Link>
             </nav>
 
         </>

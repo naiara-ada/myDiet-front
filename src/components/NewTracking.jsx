@@ -4,7 +4,8 @@ import { useParams, useLocation, useNavigate} from "react-router-dom";
 import {fetchData} from '../middleware/middleware.js'
 import LineTracking from "./LineTracking.jsx";
 import HeaderAdmin from "./HeaderAdmin.jsx";
-
+import CalendarApp from "./CalendarApp.jsx";
+import dayjs from 'dayjs'
 
 function NewTracking (){
     const {token} = useDiet();
@@ -16,7 +17,10 @@ function NewTracking (){
     const [descripcion, setDescripcion] = useState('')
     const [fecha, setFecha] = useState('')
     const [hora, setHora] = useState('');
-    const [data, setData] = useState(null)
+    const [data, setData] = useState(null);
+    const [dataAgenda, setDataAgenda] = useState(null);
+    const [events, setEvents] = useState([]);
+    const urlAgenda = import.meta.env.VITE_URL + `user/${id}/myagenda`
     
 
     console.log('name', text)
@@ -27,6 +31,15 @@ function NewTracking (){
         const resData = await fetchData(token, urlDiet)
         console.log('resData', resData)
         setData(resData)
+        const resAgenda = await fetchData(token, urlAgenda)
+        setEvents( resAgenda.map(item => (
+            {
+            start:dayjs(item.Fecha.substring(0,10) + ' '+ item.Hora_de_la_Cita).toDate(),
+            end:dayjs(item.Fecha.substring(0,10) + ' '+ item.Hora_de_la_Cita).add(30, 'minute').toDate(),
+            title: item.Descripcion
+            }
+        ))) 
+        setDataAgenda(resAgenda)
     }
 
     useEffect(() => {       
@@ -98,7 +111,8 @@ function NewTracking (){
                 </div>
                 <button type='submit'>Añadir</button>
             </form>
-
+            {dataAgenda !== null && (<CalendarApp events={events}/>)}
+            
         </div>
         <div className="nt-botton">
             <div className="containerGrid">
