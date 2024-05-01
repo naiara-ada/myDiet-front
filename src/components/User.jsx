@@ -7,21 +7,17 @@ import Boton from "./Boton.jsx";
 function User (){
     const urlDiet = import.meta.env.VITE_URL+'user'
     const [data, setData] = useState(null)
-    const {token, getUserId, idUser} = useDiet();
+    const {token} = useDiet();
     console.log('user de diet',token)
     
     const callFetchData = async () =>{
         const resData = await fetchData(token, urlDiet)
-        getUserId(resData.id)
+        //getUserId(resData.id)
         setData(resData)
     }
-
     useEffect(() => {
-       
        callFetchData()
       }, [])
-
-    
     return(
         <>
             {data === null 

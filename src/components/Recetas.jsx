@@ -9,15 +9,15 @@ function Recetas ({onClose, data}){
             onClose();
         }
     }
-
+    console.log('*****DATA RECETAS*****',data);
     return(
         <div ref={recetasRef} onClick={closeRecetas} className="fondoModal">
             <div className='modal'>
                 <button onClick={onClose} className='botonModal'><X /></button>
                 <div className='textModal'>
-                    <h1>{data.dias1[1].titulo}</h1>
-                    <p>Ingredientes: {data.dias1[1].ingredientes}</p>
-                    <p>Preparación: {data.dias1[1].preparacion} </p>
+                    <h1>{data.Titulo}</h1>
+                    <p>Ingredientes: {data.Ingredientes}</p>
+                    <p>Preparación: {data.Preparacion} </p>
                 </div>
             </div>
         </div>
