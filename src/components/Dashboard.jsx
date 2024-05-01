@@ -13,7 +13,7 @@ function Dashboard (){
             <Boton url='/dashboard/users' text='Mis Pacientes'/>
             <Boton url='/dashboard/recipes' text='Recetas'/>
             <Boton url='/dashboard/diaries' text='Diarios'/>
-            <Boton url='/dashboard/myagenda' text='Mi Agenda'/> 
+            <Boton url='/dashboard/agenda' text='Mi Agenda'/> 
             
         </div>
         </>
