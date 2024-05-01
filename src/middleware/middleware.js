@@ -8,6 +8,8 @@ export const fetchData = async (token, urlDiet) =>{
         console.log(response)
         const resData = await response.json();
         const myData = JSON.parse(resData)
+        console.log('***ResDataMIDD***',resData);
+        console.log('***MyData***',myData);
         return myData;      
 
         
