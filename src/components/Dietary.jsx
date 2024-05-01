@@ -1,6 +1,6 @@
 import { useDiet } from "../context/DietContext.jsx";
 import { useParams,Link} from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef} from "react";
 import Recetas from './Recetas.jsx'
 import { Eye } from 'lucide-react';
 import { Utensils } from 'lucide-react';
@@ -14,12 +14,35 @@ function Dietary (){
     const {id, id_plan} = useParams();
     const urlDiet = import.meta.env.VITE_URL+`user/${id}/alldietary/${id_plan}`
     const [data, setData] = useState(null);
-    //const [showRecetas, setShowRecetas] = useState(false);
+    const btnDesayunoRef = useRef();
+    
+    const [desayunoAbierto, setDesayunoAbierto] = useState(false);
+    const [indexDesayunoAbierto, setIndexDesayunoAbierto] = useState(null);
 
-    const [showDesayunos, setShowDesayunos] = useState(false);
-    const [showComidas, setShowcomidas] = useState(false);
-    const [showCenas, setShowCenas] = useState(false);
+    const [comidaAbierto, setComidaAbierto] = useState(false);
+    const [indexComidaAbierto, setIndexComidaAbierto] = useState(null);
+   
+    const [cenaAbierto, setCenaAbierto] = useState(false);
+    const [indexCenaAbierto, setIndexCenaAbierto] = useState(null);
+   
 
+
+    const abrirModalDesayuno = (index) => {
+        setIndexDesayunoAbierto(index);
+        setDesayunoAbierto(true);
+    }
+
+    const abrirModalComida = (index) =>{
+        setIndexComidaAbierto(index);
+        setComidaAbierto(true);
+    }
+
+    const abrirModalCena = (index) =>{
+        setIndexCenaAbierto(index);
+        setCenaAbierto(true);
+    }
+
+  
 
     const callFetchData = async () =>{
         const resData = await fetchData(token, urlDiet)
@@ -45,32 +68,37 @@ function Dietary (){
                         <ul> 
                             <div>
                                 <h3>Desayunos</h3>                   
-                                {data[0].map((item, index) =>(
-                                    <li key={item.id}>                                    
-                                        <button onClick={() => setShowDesayunos(true)}>{item.Titulo}<Utensils /></button>
-                                        {showDesayunos && <Recetas onClose={()=> setShowDesayunos(false)} data={item}/>}
-                                    </li>
+                                {data[0].map((desayuno, index) =>(
+                                    <div key={desayuno.id}>
+                                        <li>{desayuno.Titulo}<button onClick={() => abrirModalDesayuno(index)}><Utensils /></button></li>
+                                        {desayunoAbierto && index === indexDesayunoAbierto && (
+                                            <Recetas onClose={() => setDesayunoAbierto(false)} data={data[0]} id={indexDesayunoAbierto}/>
+                                        )}
+                                    </div>
                                 ))}
                             </div>
+
+                            
                             <div>
                                 <h3>Comidas</h3>                                           
-                                {data[1].map(item =>(
-                                    <li key={item.id}>                                    
-                                    <Link to={`${item.id}`}> {item.Titulo}</Link>
-                                    <button onClick={() => setShowcomidas(true)}><Utensils /></button>
-                                    {showComidas && <Recetas onClose={()=> setShowcomidas(false)} data={item}/>}
-                                    
-                                </li>
+                                {data[1].map((comida, index) =>(
+                                    <div key={comida.id}>
+                                        <li>{comida.Titulo}<button onClick={()=> abrirModalComida(index)}><Utensils /></button></li>
+                                        {comidaAbierto && index === indexComidaAbierto && (
+                                            <Recetas onClose={() => setComidaAbierto(false)} data={data[1]} id={indexComidaAbierto}/>
+                                        )}
+                                    </div>
                                 ))}
                             </div>
                             <div>
                                 <h3>Cenas</h3>                   
-                                {data[2].map(item =>(
-                                    <li key={item.id}>                                    
-                                    <Link to={`${item.id}`}> {item.Titulo}</Link>
-                                    <button onClick={() => setShowCenas(true)}><Utensils /></button>
-                                    {showCenas && <Recetas onClose={()=> setShowCenas(false)} data={item}/>}
-                                </li>
+                                {data[2].map((cena, index) =>(
+                                    <div key={cena.id}>
+                                        <li>{cena.Titulo}<button onClick={()=> abrirModalComida(index)}><Utensils /></button></li>
+                                        {cenaAbierto && index === indexCenaAbierto && (
+                                            <Recetas onClose={() => setCenaAbierto(false)} data={data[1]} id={indexCenaAbierto}/>
+                                        )}
+                                    </div>
                                 ))}
                             </div>
                         </ul>
