@@ -5,7 +5,7 @@ import 'dayjs/locale/es'
 
 dayjs.locale('es')
 
-function CalendarApp ({events, height, width}){
+function CalendarApp ({events}){
 
     const localizer = dayjsLocalizer(dayjs)
     console.log('events en calendar', events)
