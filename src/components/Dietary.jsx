@@ -96,7 +96,7 @@ function Dietary (){
                                     <div key={cena.id}>
                                         <li>{cena.Titulo}<button onClick={()=> abrirModalComida(index)}><Utensils /></button></li>
                                         {cenaAbierto && index === indexCenaAbierto && (
-                                            <Recetas onClose={() => setCenaAbierto(false)} data={data[1]} id={indexCenaAbierto}/>
+                                            <Recetas onClose={() => setCenaAbierto(false)} data={data[2]} id={indexCenaAbierto}/>
                                         )}
                                     </div>
                                 ))}

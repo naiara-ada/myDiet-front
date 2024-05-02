@@ -10,6 +10,7 @@ import MyAgenda from '../components/MyAgenda.jsx';
 import Header from '../components/Header.jsx';
 import Dietary from '../components/Dietary.jsx';
 import GetUsers from '../components/GetUsers.jsx';
+import GetUserById from '../components/GetUserById.jsx';
 import NewUser from '../components/NewUser.jsx';
 import GetRecipes from '../components/GetRecipes.jsx';
 import UserTracking from '../components/UserTraking.jsx';
@@ -35,6 +36,7 @@ function RoutesApp (){
                   <Route path={`/dashboard/users`} element={<GetUsers />} />
                   <Route path={`/dashboard/users/:id`} element={<UserTracking />} />
                   <Route path={`/dashboard/users/:id/newtracking`} element={<NewTracking />} />
+                  <Route path={`/dashboard/users/:id/getuserbyid`} element={<GetUserById />}/>
                   <Route path='/dashboard/recipes' element={<GetRecipes />} />
                   <Route path='/dashboard/recipes/newrecipe' element={<NewRecipe />} />
                   <Route path='/dashboard/diaries' element={<GetDiaries />} />
