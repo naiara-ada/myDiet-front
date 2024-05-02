@@ -44,9 +44,9 @@ function UserTracking (){
         <h2>Seguimiento: {nombre}</h2>
         {data === null
          ? (<div>cargando...</div>)
-         : (
-         <><div>
+         : (<div>
             <button><Link to='newtracking' state={{ text: nombre }}>Nuevo seguimiento</Link></button>
+            <button><Link to='getuserbyid' state={{text: nombre}}>Actualizar Usuario</Link></button>
             <div className="containerTracking">
             
             <div className="tracking">
