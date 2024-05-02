@@ -58,21 +58,21 @@ useEffect(() => {
                     {showDesayuno && (
                         <div className='containerGrid'>
                         {data[0].map(item =>(
-                            <LineRecipe key={item.id} item={item} url='desayuno'/>
+                            <LineRecipe key={item.id} item={item} table='desayunos'/>
                         ))}
                         </div>
                     )}
                     {showComida && (
                         <div className='containerGrid'>
                         {data[1].map(item =>(
-                            <LineRecipe key={item.id} item={item} url='comida'/>
+                            <LineRecipe key={item.id} item={item} table='comidas'/>
                         ))}
                         </div>
                     )}
                     {showCena && (
                         <div className='containerGrid'>
                         {data[2].map(item =>(
-                            <LineRecipe key={item.id} item={item} url='cena'/>
+                            <LineRecipe key={item.id} item={item} table='cenas'/>
                         ))}
                         </div>
                     )}

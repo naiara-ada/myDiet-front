@@ -3,7 +3,7 @@ import { useState, useRef} from 'react';
 import { useDiet } from "../context/DietContext.jsx";
 import { useNavigate } from "react-router-dom";
 
-function LineRecipe ({item, url}){
+function LineRecipe ({item, table}){
     const {token} = useDiet();
     const [titulo, setTitulo] = useState(item.Titulo)
     const [ingredientes, setIngredientes] = useState(item.Ingredientes);
@@ -15,13 +15,14 @@ function LineRecipe ({item, url}){
     const navigate = useNavigate();
 
     const handleUpdate = async ()=>{
-        const urlDiet = import.meta.env.VITE_URL+url
+        const urlDiet = import.meta.env.VITE_URL+ 'dashboard/recipes/updaterecipe'
         console.log(urlDiet)
         const payload={ 
             id: idRef.current.value,
             Titulo: tituloRef.current.value,
             Ingredientes: ingredienteRef.current.value,
-            Preparacion: preparacionRef.current.value
+            Preparacion: preparacionRef.current.value,
+            Tabla: table
          }
          console.log(payload)
         try {

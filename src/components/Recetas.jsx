@@ -1,8 +1,10 @@
 import { X } from 'lucide-react';
 import { useRef } from 'react';
 
-function Recetas ({onClose, data}){
+function Recetas ({onClose, data, id}){
     const recetasRef = useRef()
+    console.log('id', id)
+    console.log('data', data)
 
     const closeRecetas = (e) =>{
         if(recetasRef.current === e.target){
@@ -15,9 +17,9 @@ function Recetas ({onClose, data}){
             <div className='modal'>
                 <button onClick={onClose} className='botonModal'><X /></button>
                 <div className='textModal'>
-                    <h1>{data.Titulo}</h1>
-                    <p>Ingredientes: {data.Ingredientes}</p>
-                    <p>Preparación: {data.Preparacion} </p>
+                    <h3>{data[id].Titulo}</h3>
+                    <p>Ingredientes: {data[id].Ingredientes}</p>
+                    <p>Preparación: {data[id].Preparacion} </p>
                 </div>
             </div>
         </div>

@@ -1,4 +1,4 @@
-import { useParams, useLocation } from "react-router-dom";
+import { useParams, useLocation, Link } from "react-router-dom";
 import { useDiet } from "../context/DietContext.jsx";
 import { useState, useEffect } from "react";
 import LineChart from "./LineChart.jsx";
@@ -19,8 +19,9 @@ function UserTracking (){
 
     const callFetchData = async () =>{
         const resData = await fetchData(token, urlDiet)
+        console.log(resData)
         setPeso(resData.map(item => parseFloat(item.Peso)));           
-        setFechas(resData.map(item => item.Fecha.substring(0,10)));       
+        setFechas(resData.map(item => item.Fecha.substring(0,10))); ///      
         setGrasa(resData.map(item => parseFloat(item.Grasa_Corporal)));
         
         setData(resData)
@@ -37,8 +38,9 @@ function UserTracking (){
         {data === null
          ? (<div>cargando...</div>)
          : (<div>
-            
+            <Link to='newtracking' state={{ text: nombre }}>Nuevo seguimiento</Link>
             <div className="containerTracking">
+            
             <div className="tracking">
                     <h3>Peso</h3>
                     <LineChart data={peso} citas={fechas} label='Peso'/>
