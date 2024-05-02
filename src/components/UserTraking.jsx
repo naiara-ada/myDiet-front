@@ -5,6 +5,7 @@ import LineChart from "./LineChart.jsx";
 import {fetchData} from '../middleware/middleware.js'
 import HeaderAdmin from "./HeaderAdmin.jsx";
 
+
 function UserTracking (){
     const {token} = useDiet();
     const location = useLocation()
@@ -17,6 +18,8 @@ function UserTracking (){
     const [grasa, setGrasa] = useState([])
     const [fechas, setFechas] = useState([])
 
+    const [dataPlan, setDataPlan] = useState(null)
+
     const callFetchData = async () =>{
         const resData = await fetchData(token, urlDiet)
         console.log(resData)
@@ -25,6 +28,10 @@ function UserTracking (){
         setGrasa(resData.map(item => parseFloat(item.Grasa_Corporal)));
         
         setData(resData)
+
+        const resDataPlan = await fetchData(token, import.meta.env.VITE_URL+`user/${id}/alldietary`)
+        console.log('resDataPlan', resDataPlan)
+        setDataPlan(resDataPlan);
     }
 
     useEffect(() => {       
@@ -37,8 +44,9 @@ function UserTracking (){
         <h2>Seguimiento: {nombre}</h2>
         {data === null
          ? (<div>cargando...</div>)
-         : (<div>
-            <Link to='newtracking' state={{ text: nombre }}>Nuevo seguimiento</Link>
+         : (
+         <><div>
+            <button><Link to='newtracking' state={{ text: nombre }}>Nuevo seguimiento</Link></button>
             <div className="containerTracking">
             
             <div className="tracking">
@@ -52,10 +60,24 @@ function UserTracking (){
                 </div> 
                     
             </div></div>
-         
+            
+         </>
             )
         }
-        
+            <div>
+            <button><Link to='newPlan' state={{ text: nombre }}>Nuevo Plan</Link></button>
+            <ul>
+                {dataPlan !== null &&(
+                    (dataPlan.map((item, index)=>(
+                        <li key={index}>
+                            <Link to={`${item.Plan_id}`}>{item.Nombre}</Link>
+
+                        </li>
+                    )))
+
+                )}
+            </ul>
+            </div>
         </>
     )
 }

@@ -14,7 +14,7 @@ function GetDiaries (){
     
     const callFetchData = async () =>{
         const resData = await fetchData(token, urlDiet);
-        console.log(resData)
+        console.log('resData getDiaries', resData)
         setData(resData)
     }
     
@@ -27,12 +27,16 @@ function GetDiaries (){
             <HeaderAdmin />
             <h1>Diarios</h1>
             {data !== null && (
-                <div className='containerGrid'>
-                    {data.map(item =>(
-                        <LineDiary key={item.id} item={item}/>
-                    ))}
+                <>
+                    <button><Link to='/dashboard/diaries/newdiary' >Nuevo diario</Link></button>
+                    <div className='containerGrid'>
+                        {data.map(item =>(
+                            <LineDiary key={item.id} item={item}/>
+                        ))}
 
-                </div>
+                    </div>
+
+                </>
             )}
         </>
     )

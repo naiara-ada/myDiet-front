@@ -8,14 +8,16 @@ function LineTracking ({item}){
     const [descripcion, setDescripcion] = useState(item.Descripcion)
     const [fecha, setFecha] = useState(item.Fecha.substring(0,10));
     const [hora, setHora] = useState(item.Hora_de_la_Cita)
-    const [peso, setPeso] = useState(item.Peso)
-    const [grasa, setGrasa] = useState(item.Grasa_Corporal);
+    const [peso, setPeso] = useState(item.Peso || '')
+    const [grasa, setGrasa] = useState(item.Grasa_Corporal || '');
+    const [itemId, setItemId] = useState(item.id);
     const idRef = useRef();
     const descripcionRef = useRef();
     const fechaRef = useRef();
     const horaRef = useRef();
     const pesoRef = useRef();
     const grasaRef = useRef();
+
 
     const handleUpdate = async()=>{
         const urlDiet = import.meta.env.VITE_URL+'updatetracking'
@@ -49,30 +51,37 @@ function LineTracking ({item}){
     }
 
     return(
-        <div className='containerTracking'>
-            <input type='text' value={item.id} ref={idRef} readOnly style={{width: '20px'}}/>
-            <input type='text' 
-                value={descripcion} 
-                ref={descripcionRef} 
-                onChange={(e)=>setDescripcion(e.target.value)}/>
-            <input type='date' 
-                value={fecha} 
-                ref={fechaRef} 
-                onChange={(e)=>setFecha(e.target.value)}/>
-            <input type='time' 
-                value={hora} 
-                ref={horaRef} 
-                onChange={(e)=>setHora(e.target.value)}/>
-            <input type='text' style={{width: '40px'}}
-                value={peso} 
-                ref={pesoRef} 
-                onChange={(e)=>setPeso(e.target.value)}/>
-            <input type='text' style={{width: '40px'}}
-                value={grasa} 
-                ref={grasaRef} 
-                onChange={(e)=>setGrasa(e.target.value)}/>
-            <PencilLine size={18} color='blue' onClick={handleUpdate} style={{cursor: 'pointer'}}/>
-        </div>
+        <>
+            {itemId !== null && (
+                <div className='containerTracking'>
+                <input type='text' value={itemId} ref={idRef} readOnly style={{width: '20px'}}/>
+                <input type='text' 
+                    value={descripcion} 
+                    ref={descripcionRef} 
+                    onChange={(e)=>setDescripcion(e.target.value)}/>
+                <input type='date' 
+                    value={fecha} 
+                    ref={fechaRef} 
+                    onChange={(e)=>setFecha(e.target.value)}/>
+                <input type='time' 
+                    value={hora} 
+                    ref={horaRef} 
+                    onChange={(e)=>setHora(e.target.value)}/>
+                <input type='text' style={{width: '40px'}}
+                    value={peso} 
+                    ref={pesoRef} 
+                    onChange={(e)=>setPeso(e.target.value)}/>
+                <input type='text' style={{width: '40px'}}
+                    value={grasa} 
+                    ref={grasaRef} 
+                    onChange={(e)=>setGrasa(e.target.value)}/>
+                <PencilLine className='iconClass' color='blue' onClick={handleUpdate} />
+                    
+                
+                </div>
+            )}
+            
+            </>
     )
 }
 

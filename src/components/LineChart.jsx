@@ -26,11 +26,6 @@ ChartJS.register(
 
 
 function LineChart({data, citas, label}) {
-    console.log('mydata en el chart', data)
-    console.log('mycitas en el chart', citas)
-       
-    
-    
     
     const midata = {
         labels: citas,

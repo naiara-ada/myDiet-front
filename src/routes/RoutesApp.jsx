@@ -17,6 +17,9 @@ import NewRecipe from '../components/NewRecipe.jsx';
 import NewTracking from '../components/NewTracking.jsx';
 import GetDiaries from '../components/GetDiaries.jsx';
 import GetAgenda from '../components/GetAgenda.jsx';
+import NewDiary from '../components/NewDiary.jsx';
+import NewPlan from '../components/NewPlan.jsx'
+import UpdatePlan from '../components/UpdatePlan.jsx';
 
 
 function RoutesApp (){
@@ -40,6 +43,10 @@ function RoutesApp (){
                   <Route path='/dashboard/diaries' element={<GetDiaries />} />
                   <Route path={`/dashboard/users/newuser`} element={<NewUser />} />
                   <Route path='/dashboard/agenda' element={<GetAgenda />} />
+                  <Route path='/dashboard/diaries/newdiary' element={<NewDiary />} />
+                  <Route path='/dashboard/users/:id/newplan' element={<NewPlan />}/>
+                  <Route path='/dashboard/users/:id/:id_plan' element={<UpdatePlan />}/>
+
 
                                                       
             </Routes>

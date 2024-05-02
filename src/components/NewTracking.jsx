@@ -7,6 +7,7 @@ import HeaderAdmin from "./HeaderAdmin.jsx";
 import CalendarApp from "./CalendarApp.jsx";
 import dayjs from 'dayjs'
 
+
 function NewTracking (){
     const {token} = useDiet();
     const {id} = useParams();
@@ -67,7 +68,7 @@ function NewTracking (){
 
             if(response.ok){
                 console.log('ok guardado')
-                navigate(`dashboard/users/${id}`)
+                navigate(-1)
             }            
         } catch (error) {
             console.log(error)
@@ -111,7 +112,7 @@ function NewTracking (){
                 </div>
                 <button type='submit'>Añadir</button>
             </form>
-            {dataAgenda !== null && (<CalendarApp events={events}/>)}
+            
             
         </div>
         <div className="nt-botton">
