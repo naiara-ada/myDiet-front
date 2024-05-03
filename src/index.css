@@ -28,6 +28,10 @@ body {
   min-width: 320px;
   min-height: 100vh;
   background-color: #f9f3ff;
+  background-image: url('./assets/img/8904d.jpg');
+  background-repeat: no-repeat;
+  
+  
 }
 
 h1 {

@@ -47,7 +47,7 @@ function Dietary (){
     const callFetchData = async () =>{
         const resData = await fetchData(token, urlDiet)
         setData(resData)
-        console.log('!!!!!!RESDATA DE DIETARY!!!!!!',resData)
+        
     }
 
     console.log(data);

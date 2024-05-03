@@ -12,6 +12,7 @@ function User (){
     
     const callFetchData = async () =>{
         const resData = await fetchData(token, urlDiet)
+        console.log(resData)
         //getUserId(resData.id)
         setData(resData)
     }

@@ -19,11 +19,11 @@ import NewTracking from '../components/NewTracking.jsx';
 import GetDiaries from '../components/GetDiaries.jsx';
 import GetAgenda from '../components/GetAgenda.jsx';
 import NewDiary from '../components/NewDiary.jsx';
-/*
+
 import NewPlan from '../components/NewPlan.jsx'; NewPlan
 import UpdatePlan from '../components/UpdatePlan.jsx'; UpdatePlan
 
-*/
+
 
 function RoutesApp (){
                       

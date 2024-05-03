@@ -9,6 +9,7 @@ function Home (){
     const [inputPassword, setInputPassword] = useState('');
     const navigate = useNavigate();
     const {token, loginToken} = useDiet();
+    auth.signOut();
         
     const signInEmail = async (e)=>{
     e.preventDefault();
@@ -22,7 +23,7 @@ function Home (){
             
         //miramos si el correo es el administrador para ir a una sección u otra
         user.email === import.meta.env.VITE_EMAILADMIN ? navigate('/dashboard', {state:{vtoken:ptoken}} ) : navigate('/user')
-
+        
 
         
     } catch (error) {
