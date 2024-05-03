@@ -61,7 +61,7 @@ function UserTracking (){
                     
             </div></div>
             
-         </>
+         
             )
         }
             <div>
@@ -70,7 +70,7 @@ function UserTracking (){
                 {dataPlan !== null &&(
                     (dataPlan.map((item, index)=>(
                         <li key={index}>
-                            <Link to={`${item.Plan_id}`}>{item.Nombre}</Link>
+                            <Link to={`${item.id}`}>{item.Nombre}</Link>
 
                         </li>
                     )))
