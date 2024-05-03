@@ -48,7 +48,7 @@ function LineDiary ({item}){
         callFetchData()
     }, [])
     
-      const handleDelete =async ()=> {
+      const handleDeleteDiary =async ()=> {
     
         const urlDeleteRecipe = import.meta.env.VITE_URL +'deleteDiary';
         console.log(urlDeleteRecipe);
@@ -139,8 +139,8 @@ function LineDiary ({item}){
 
                     </div>
                 )}
-                <PencilLine className='iconClass' color='blue' onClick={handleUpdate}/>
-                <Trash2 className='iconClass' color='blue' onClick={handleDelete}/>
+                <button><PencilLine className='iconClass' size={18} color='blue' onClick={handleUpdate}/></button>
+                <button><Trash2 className='iconClass' size={18} color='blue' onClick={handleDeleteDiary}/></button>
                     
         </div>       
         

@@ -86,8 +86,8 @@ function LineRecipe ({item, table}){
              ref={preparacionRef}
              value={preparacion}
              onChange={(e)=>setPreparacion(e.target.value)}></textarea>
-        <PencilLine onClick={handleUpdate}/>
-        <Trash2 onClick={handleDelete}/>
+            <button><PencilLine className='iconClass' size={18} color='blue' onClick={handleUpdate}/></button>
+            <button><Trash2 className='iconClass' size={18} color='blue' onClick={handleDelete}/></button>
          </div>
     )
 }

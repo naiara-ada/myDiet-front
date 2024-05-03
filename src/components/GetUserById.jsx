@@ -70,28 +70,36 @@ function getUserById (){
         <>
         <HeaderAdmin />
         <h2>Update: {nombre}</h2>
-        <div>
-            <label>Nombre:</label>
-            <input
-                type='text'
-                value={nombre}
-                onChange={(e) => setNombre(e.target.value)}
-            /> 
-            <label>Apellido:</label>
-            <input
-                type='text'
-                value={apellido}
-                onChange={(e) => setApellido(e.target.value)}
-            />
-            <label>Email:</label>
-            <input
-                type='text'
-                value={correo}
-                onChange={(e) => setCorreo(e.target.value)}
+        <div className='containerGrid'>
+            <div className='lineDiary'>
+                <label>Nombre: </label>
+                <input
+                    type='text'
+                    value={nombre}
+                    onChange={(e) => setNombre(e.target.value)}
+                /> 
+            </div>
+            <div className='lineDiary'>
+                <label>Apellido: </label>
+                <input
+                    type='text'
+                    value={apellido}
+                    onChange={(e) => setApellido(e.target.value)}
                 />
-            <label>Contraseña:</label>
-            <input  type='text' value={contraseña} readOnly/>
-            <PencilLine size={18} color='blue' onClick={handleUpdateUser} style={{cursor: 'pointer'}}/>
+            </div>
+            <div className='lineDiary'>
+                <label>Email: </label>
+                <input
+                    type='text'
+                    value={correo}
+                    onChange={(e) => setCorreo(e.target.value)}
+                />
+            </div>
+            <div className='lineDiary'>
+                <label>Contraseña: </label>
+                <input  type='text' value={contraseña} readOnly/>
+                <button><PencilLine size={18} color='blue' onClick={handleUpdateUser} style={{cursor: 'pointer'}}/></button>
+            </div>
         </div>
         </>
     )
