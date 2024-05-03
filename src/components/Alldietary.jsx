@@ -9,11 +9,11 @@ function Alldietary (){
     const {id} = useParams();
     console.log(id)
     const urlDiet = import.meta.env.VITE_URL+`user/${id}/alldietary`
-    console.log('urldiet', urlDiet)
     const [data, setData] = useState(null)
 
     const callFetchData = async () =>{
         const resData = await fetchData(token, urlDiet)
+        console.log('resdata alldietary', resData)
         setData(resData)
     }
 

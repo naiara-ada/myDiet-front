@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import HeaderAdmin from "./HeaderAdmin";
 import { useParams, Link } from "react-router-dom";
@@ -12,6 +11,7 @@ function NewPlan (){
     const {id} = useParams();
     const [data, setData] = useState(null);
     const [nombre, setNombre] = useState('');
+    const [descripcion, setDescripcion] = useState('');
     const [fecha, setFecha] = useState('');
     const [optdia1, setOptdia1] = useState([]);
     const [selOptdia1, setSelOptdia1] = useState(null);
@@ -29,9 +29,10 @@ function NewPlan (){
     const [selOptdia7, setSelOptdia7] = useState(null);
 
 
-    const urlDiet = import.meta.env.VITE_URL+'dashboard/diaries'
+    
    
     const callFetchData = async () =>{
+        const urlDiet = import.meta.env.VITE_URL+'dashboard/diaries'
         const resData = await fetchData(token, urlDiet);
         console.log('resData getDiaries', resData)
         if (resData){
@@ -39,37 +40,37 @@ function NewPlan (){
                 id: item.id,
                 titulo: item.Nombre
             })));
-            setSelOptdia1(resData[0]);
+            setSelOptdia1(resData[0].id);
             setOptdia2(resData.map(item => ({
                 id: item.id,
                 titulo: item.Nombre
             })));
-            setSelOptdia2(resData[0]);
+            setSelOptdia2(resData[0].id);
             setOptdia3(resData.map(item => ({
                 id: item.id,
                 titulo: item.Nombre
             })));
-            setSelOptdia3(resData[0]);
+            setSelOptdia3(resData[0].id);
             setOptdia4(resData.map(item => ({
                 id: item.id,
                 titulo: item.Nombre
             })));
-            setSelOptdia4(resData[0]);
+            setSelOptdia4(resData[0].id);
             setOptdia5(resData.map(item => ({
                 id: item.id,
                 titulo: item.Nombre
             })));
-            setSelOptdia5(resData[0]);
+            setSelOptdia5(resData[0].id);
             setOptdia6(resData.map(item => ({
                 id: item.id,
                 titulo: item.Nombre
             })));
-            setSelOptdia6(resData[0]);
+            setSelOptdia6(resData[0].id);
             setOptdia7(resData.map(item => ({
                 id: item.id,
                 titulo: item.Nombre
             })));
-            setSelOptdia7(resData[0]);
+            setSelOptdia7(resData[0].id);
         }
 
         setData(resData)
@@ -81,7 +82,34 @@ function NewPlan (){
 
     const handleSubmit = async (e)=>{
         e.preventDefault();
-        
+        const urlPlan = import.meta.env.VITE_URL+`dashboard/users/${id}/newplan`
+        const payload={
+            Nombre: nombre,
+            Descripcion: descripcion,
+            Fecha: fecha,
+            dias:[selOptdia1, selOptdia2, selOptdia3, selOptdia4, selOptdia5, selOptdia6, selOptdia7]
+        }
+
+        console.log('payload', payload)
+
+        try {
+            const response = await fetch(urlPlan, {
+                method: 'POST',
+                headers:{
+                    'Content-Type': 'application/json', 
+                     authorization: 'Bearer ' + token
+                },
+                body: JSON.stringify(payload)
+            })
+              
+            if(response.ok){
+                console.log('ok')
+            }            
+        } catch (error) {
+            console.log(error)
+            
+        }
+
 
     }
    
@@ -97,6 +125,15 @@ function NewPlan (){
                     type='text'
                     value={nombre}
                     onChange={(e)=>setNombre(e.target.value)}
+                    required>                    
+                </input>
+            </div>
+            <div className="formRow">
+                <label>Descripción:</label>
+                <input
+                    type='text'
+                    value={descripcion}
+                    onChange={(e)=>setDescripcion(e.target.value)}
                     required>                    
                 </input>
             </div>
@@ -177,7 +214,6 @@ function NewPlan (){
 
     
     </>)
-
 }
 
 export default NewPlan
