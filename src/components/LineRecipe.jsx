@@ -1,4 +1,5 @@
 import { PencilLine } from 'lucide-react';
+import { Trash2 } from 'lucide-react';
 import { useState, useRef} from 'react';
 import { useDiet } from "../context/DietContext.jsx";
 import { useNavigate } from "react-router-dom";
@@ -13,6 +14,33 @@ function LineRecipe ({item, table}){
     const ingredienteRef = useRef();
     const preparacionRef = useRef();
     const navigate = useNavigate();
+
+    const handleDelete =async ()=> {
+        const urlDeleteRecipe = import.meta.env.VITE_URL +'deleterecipe';
+        console.log(urlDeleteRecipe);
+        const payload ={
+            id: idRef.current.value,
+            Tabla: table,
+        }
+        console.log(payload)
+        try {
+            const response = await fetch(urlDeleteRecipe, {
+                method: 'DELETE',
+                headers:{
+                    'Content-Type': 'application/json', 
+                     authorization: 'Bearer ' + token
+                },
+                body: JSON.stringify(payload)
+            })
+              
+            if(response.ok){
+                navigate('/dashboard/recipes');
+            }            
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
 
     const handleUpdate = async ()=>{
         const urlDiet = import.meta.env.VITE_URL+ 'dashboard/recipes/updaterecipe'
@@ -58,7 +86,8 @@ function LineRecipe ({item, table}){
              ref={preparacionRef}
              value={preparacion}
              onChange={(e)=>setPreparacion(e.target.value)}></textarea>
-        <PencilLine onClick={handleUpdate}/>
+            <button><PencilLine className='iconClass' size={18} color='blue' onClick={handleUpdate}/></button>
+            <button><Trash2 className='iconClass' size={18} color='blue' onClick={handleDelete}/></button>
          </div>
     )
 }

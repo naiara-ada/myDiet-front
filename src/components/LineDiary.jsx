@@ -1,13 +1,18 @@
 import { PencilLine } from 'lucide-react';
+import { Trash2 } from 'lucide-react';
 import { useState, useRef, useEffect} from 'react';
 import { useDiet } from "../context/DietContext.jsx";
 import {fetchData} from '../middleware/middleware.js';
+import { useNavigate } from "react-router-dom";
 
 function LineDiary ({item}){
     const {token} = useDiet();
     const [nombre, setNombre] = useState(item.Nombre);
     const idRef = useRef();
     const nombreRef = useRef();
+
+    const navigate = useNavigate();
+
     console.log('item desayuno', item.Desayuno_id)
     const [data, setData] = useState(null);
     const [optionsDesayuno, setOptionsDesayuno] = useState([]);
@@ -21,6 +26,7 @@ function LineDiary ({item}){
         const urlDiet = import.meta.env.VITE_URL+'dashboard/recipes'
         const resData = await fetchData(token, urlDiet);
         setData(resData)
+
 
         if(resData ){
             setOptionsDesayuno(resData[0].map(recipe => ({
@@ -42,8 +48,35 @@ function LineDiary ({item}){
     }
     
     useEffect(() => {       
-       callFetchData()
-      }, [])
+        callFetchData()
+    }, [])
+    
+      const handleDeleteDiary =async ()=> {
+    
+        const urlDeleteRecipe = import.meta.env.VITE_URL +'deleteDiary';
+        console.log(urlDeleteRecipe);
+        const payload ={
+            id: idRef.current.value,
+            
+        }
+        console.log(payload)
+        try {
+            const response = await fetch(urlDeleteRecipe, {
+                method: 'DELETE',
+                headers:{
+                    'Content-Type': 'application/json', 
+                     authorization: 'Bearer ' + token
+                },
+                body: JSON.stringify(payload)
+            })
+              
+            if(response.ok){
+                navigate(-1);
+            }            
+        } catch (error) {
+            console.log(error)
+        }
+    }
 
     const handleUpdate = async () =>{
         const urlDiet = import.meta.env.VITE_URL+'updatediary'
@@ -107,9 +140,12 @@ function LineDiary ({item}){
                         </div>
 
 
+
                     </div>
                 )}
-                <PencilLine className='iconClass' color='blue' onClick={handleUpdate}/>
+                <button><PencilLine className='iconClass' size={18} color='blue' onClick={handleUpdate}/></button>
+                <button><Trash2 className='iconClass' size={18} color='blue' onClick={handleDeleteDiary}/></button>
+
                     
         </div>       
         

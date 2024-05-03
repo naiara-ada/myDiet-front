@@ -22,7 +22,7 @@ function GetDiaries (){
        callFetchData()
       }, [])
 
-    return(
+      return(
         <>
             <HeaderAdmin />
             <h1>Diarios</h1>
