@@ -22,17 +22,21 @@ function GetDiaries (){
        callFetchData()
       }, [])
 
-    return(
+      return(
         <>
             <HeaderAdmin />
             <h1>Diarios</h1>
             {data !== null && (
-                <div className='containerGrid'>
-                    {data.map(item =>(
-                        <LineDiary key={item.id} item={item}/>
-                    ))}
+                <>
+                    <button><Link to='/dashboard/diaries/newdiary' >Nuevo diario</Link></button>
+                    <div className='containerGrid'>
+                        {data.map(item =>(
+                            <LineDiary key={item.id} item={item}/>
+                        ))}
 
-                </div>
+                    </div>
+
+                </>
             )}
         </>
     )
