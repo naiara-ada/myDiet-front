@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from "react";
 import HeaderAdmin from "./HeaderAdmin";
 import { useParams, Link } from "react-router-dom";
@@ -176,6 +177,7 @@ function NewPlan (){
 
     
     </>)
+
 }
 
 export default NewPlan

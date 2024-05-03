@@ -166,5 +166,18 @@ box-shadow: 10px 10px 5px 0px rgba(182,214,255,1);
   display: flex;
 }
 
+.iconClass{
+  size: 18px;
+  cursor: pointer;
+}
 
+.containerDiary{
+  display: flex;
+  border-bottom: 1px solid #1432ff; 
+  padding-bottom: 5px;
+}
+.lineDiary{
+  display: flex;
+  
+}
 

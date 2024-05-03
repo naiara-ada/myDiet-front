@@ -14,7 +14,7 @@ function GetDiaries (){
     
     const callFetchData = async () =>{
         const resData = await fetchData(token, urlDiet);
-        console.log(resData)
+        console.log('resData getDiaries', resData)
         setData(resData)
     }
     

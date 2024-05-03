@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useDiet } from "../context/DietContext.jsx";
 import { useNavigate } from "react-router-dom";
+import HeaderAdmin from "./HeaderAdmin";
 
 function NewRecipe (){
     const {token} = useDiet();
@@ -9,6 +10,7 @@ function NewRecipe (){
     const [ingredientes, setIngredientes] = useState('');
     const [preparacion, setPreparacion] = useState('');
     const navigate = useNavigate();
+    const [res, setRes] = useState(false)
 
     const handleSubmit = async (e)=>{
         e.preventDefault()
@@ -32,17 +34,27 @@ function NewRecipe (){
             })
               
             if(response.ok){
-                navigate('/dashboard/recipes');a
+                setRes(true)
+                setTitulo('');
+                setIngredientes('');
+                setPreparacion('');
+                setTipo('desayuno');
             }            
         } catch (error) {
             console.log(error)
+            
         }
+
+        useEffect(()=>{
+            navigate('/dashboard/recipes');
+        },[handleSubmit])
 
         
     }
 
     return(
         <>
+        <HeaderAdmin />
         <h1>Nueva Receta</h1>
         <form onSubmit={handleSubmit} className="formClass">
             <div className="formRow">

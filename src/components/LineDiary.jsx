@@ -10,7 +10,9 @@ function LineDiary ({item}){
     const [nombre, setNombre] = useState(item.Nombre);
     const idRef = useRef();
     const nombreRef = useRef();
+
     const navigate = useNavigate();
+
     console.log('item desayuno', item.Desayuno_id)
     const [data, setData] = useState(null);
     const [optionsDesayuno, setOptionsDesayuno] = useState([]);
@@ -24,7 +26,8 @@ function LineDiary ({item}){
         const urlDiet = import.meta.env.VITE_URL+'dashboard/recipes'
         const resData = await fetchData(token, urlDiet);
         setData(resData)
-        
+
+
         if(resData ){
             setOptionsDesayuno(resData[0].map(recipe => ({
                 id: recipe.id,
@@ -38,7 +41,7 @@ function LineDiary ({item}){
                 id: recipe.id,
                 titulo: recipe.Titulo
             })));
-            
+
 
         }
        
@@ -137,10 +140,12 @@ function LineDiary ({item}){
                         </div>
 
 
+
                     </div>
                 )}
                 <button><PencilLine className='iconClass' size={18} color='blue' onClick={handleUpdate}/></button>
                 <button><Trash2 className='iconClass' size={18} color='blue' onClick={handleDeleteDiary}/></button>
+
                     
         </div>       
         
