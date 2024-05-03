@@ -47,6 +47,10 @@ function RoutesApp (){
                   <Route path={`/dashboard/users/newuser`} element={<NewUser />} />
                   <Route path='/dashboard/agenda' element={<GetAgenda />} />
 
+                  <Route path='/dashboard/diaries/newdiary' element={<NewDiary />} />
+                  <Route path='/dashboard/users/:id/newplan' element={<NewPlan />}/>
+                  <Route path='/dashboard/users/:id/:id_plan' element={<UpdatePlan />}/>
+
                                                       
             </Routes>
                         

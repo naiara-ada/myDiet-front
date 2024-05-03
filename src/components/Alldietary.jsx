@@ -6,15 +6,14 @@ import {fetchData} from '../middleware/middleware.js' //llama al back para traer
 
 function Alldietary (){
     const {token} = useDiet();
-    console.log('token alldietary', token)
     const {id} = useParams();
     console.log(id)
     const urlDiet = import.meta.env.VITE_URL+`user/${id}/alldietary`
-    console.log('urldiet', urlDiet)
     const [data, setData] = useState(null)
 
     const callFetchData = async () =>{
         const resData = await fetchData(token, urlDiet)
+        console.log('resdata alldietary', resData)
         setData(resData)
     }
 
@@ -31,7 +30,7 @@ function Alldietary (){
              ? (<div>cargando...</div>)
              : (data.map((item, index) =>(
                 <li key={index}>
-                    <Link to={`${item.Plan_id}`}>{item.Nombre}</Link>
+                    <Link to={`${item.id}`}>{item.Nombre}</Link>
                 </li>
             )))
             }
