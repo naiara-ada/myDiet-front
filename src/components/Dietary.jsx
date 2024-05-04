@@ -1,20 +1,18 @@
 import { useDiet } from "../context/DietContext.jsx";
 import { useParams,Link} from "react-router-dom";
-import { useEffect, useState, useRef} from "react";
+import { useEffect, useState} from "react";
 import Recetas from './Recetas.jsx'
-import { Eye } from 'lucide-react';
 import { Utensils } from 'lucide-react';
 import Header from "./Header.jsx";
 import {fetchData} from '../middleware/middleware.js'
-import LineRecipe from './LineRecipe.jsx';
+import '../index.css'
 
 function Dietary (){
     const {token} = useDiet();
-    console.log(useParams())
     const {id, id_plan} = useParams();
     const urlDiet = import.meta.env.VITE_URL+`user/${id}/alldietary/${id_plan}`
     const [data, setData] = useState(null);
-    const btnDesayunoRef = useRef();
+    
     
     const [desayunoAbierto, setDesayunoAbierto] = useState(false);
     const [indexDesayunoAbierto, setIndexDesayunoAbierto] = useState(null);
@@ -60,48 +58,56 @@ function Dietary (){
 
         <>
             <Header id={id}/>
-            <h1>Dietary</h1>
+            <h1>Mis dietas</h1>
             {data === null
                 ? (<div>cargando...</div>)
                 : (
-                    <div>
-                        <ul> 
+                    <div >
+                        
                             <div>
-                                <h3>Desayunos</h3>                   
-                                {data[0].map((desayuno, index) =>(
-                                    <div key={desayuno.id}>
-                                        <li>{desayuno.Titulo}<button onClick={() => abrirModalDesayuno(index)}><Utensils /></button></li>
-                                        {desayunoAbierto && index === indexDesayunoAbierto && (
-                                            <Recetas onClose={() => setDesayunoAbierto(false)} data={data[0]} id={indexDesayunoAbierto}/>
-                                        )}
-                                    </div>
-                                ))}
+                                <h3>Desayunos</h3>  
+                                <ul>                  
+                                    {data[0].map((desayuno, index) =>(
+                                        <div key={desayuno.id}>
+                                            <li  key={index}className="liDietary">{desayuno.Titulo}<button className='btnDietary' onClick={() => abrirModalDesayuno(index)}> <Utensils size={18} /></button></li>
+                                            {desayunoAbierto && index === indexDesayunoAbierto && (
+                                                <Recetas key={index +1} onClose={() => setDesayunoAbierto(false)} data={data[0]} id={indexDesayunoAbierto}/>
+                                            )}
+                                        </div>
+                                    ))}
+                                </ul>
                             </div>
-
+                        
+                         
                             
                             <div>
-                                <h3>Comidas</h3>                                           
-                                {data[1].map((comida, index) =>(
-                                    <div key={comida.id}>
-                                        <li>{comida.Titulo}<button onClick={()=> abrirModalComida(index)}><Utensils /></button></li>
-                                        {comidaAbierto && index === indexComidaAbierto && (
-                                            <Recetas onClose={() => setComidaAbierto(false)} data={data[1]} id={indexComidaAbierto}/>
-                                        )}
-                                    </div>
-                                ))}
+                                <h3>Comidas</h3>
+                                <ul>                                           
+                                    {data[1].map((comida, index) =>(
+                                        <div key={comida.id}>
+                                            <li>{comida.Titulo}<button onClick={()=> abrirModalComida(index)}><Utensils size={18} /></button></li>
+                                            {comidaAbierto && index === indexComidaAbierto && (
+                                                <Recetas onClose={() => setComidaAbierto(false)} data={data[1]} id={indexComidaAbierto}/>
+                                            )}
+                                        </div>
+                                    ))}
+                                </ul>
                             </div>
+                             
                             <div>
-                                <h3>Cenas</h3>                   
-                                {data[2].map((cena, index) =>(
-                                    <div key={cena.id}>
-                                        <li>{cena.Titulo}<button onClick={()=> abrirModalComida(index)}><Utensils /></button></li>
-                                        {cenaAbierto && index === indexCenaAbierto && (
-                                            <Recetas onClose={() => setCenaAbierto(false)} data={data[2]} id={indexCenaAbierto}/>
-                                        )}
-                                    </div>
-                                ))}
+                                <h3>Cenas</h3>
+                                <ul>                   
+                                    {data[2].map((cena, index) =>(
+                                        <div key={cena.id}>
+                                            <li>{cena.Titulo}<button onClick={()=> abrirModalCena(index)}><Utensils size={18}  /></button></li>
+                                            {cenaAbierto && index === indexCenaAbierto && (
+                                                <Recetas onClose={() => setCenaAbierto(false)} data={data[2]} id={indexCenaAbierto}/>
+                                            )}
+                                        </div>
+                                    ))}
+                                    </ul>
                             </div>
-                        </ul>
+                        
                     </div>
                 )
             }            

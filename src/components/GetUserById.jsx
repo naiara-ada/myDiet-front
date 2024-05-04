@@ -70,9 +70,10 @@ function getUserById (){
         <>
         <HeaderAdmin />
         <h2>Update: {nombre}</h2>
-        <div className='containerGrid'>
+        <button onClick={()=> navigate(-1)}>Volver</button>
+        <div className='containerHome'>
             <div className='lineDiary'>
-                <label>Nombre: </label>
+                <label className='labelform'>Nombre: </label>
                 <input
                     type='text'
                     value={nombre}
@@ -80,7 +81,7 @@ function getUserById (){
                 /> 
             </div>
             <div className='lineDiary'>
-                <label>Apellido: </label>
+                <label className='labelform'>Apellido: </label>
                 <input
                     type='text'
                     value={apellido}
@@ -88,7 +89,7 @@ function getUserById (){
                 />
             </div>
             <div className='lineDiary'>
-                <label>Email: </label>
+                <label className='labelform'>Email: </label>
                 <input
                     type='text'
                     value={correo}
@@ -96,8 +97,8 @@ function getUserById (){
                 />
             </div>
             <div className='lineDiary'>
-                <label>Contraseña: </label>
-                <input  type='text' value={contraseña} readOnly/>
+                <label className='labelform'>Contraseña: </label>
+                <input type='text' value={contraseña} readOnly/>
                 <button><PencilLine size={18} color='blue' onClick={handleUpdateUser} style={{cursor: 'pointer'}}/></button>
             </div>
         </div>

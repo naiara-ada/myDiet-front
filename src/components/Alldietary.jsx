@@ -7,13 +7,11 @@ import {fetchData} from '../middleware/middleware.js' //llama al back para traer
 function Alldietary (){
     const {token} = useDiet();
     const {id} = useParams();
-    console.log(id)
     const urlDiet = import.meta.env.VITE_URL+`user/${id}/alldietary`
     const [data, setData] = useState(null)
 
     const callFetchData = async () =>{
         const resData = await fetchData(token, urlDiet)
-        console.log('resdata alldietary', resData)
         setData(resData)
     }
 
@@ -24,7 +22,7 @@ function Alldietary (){
     return(
         <>
             <Header id={id}/>
-            <h1>Alldietary</h1>
+            <h1>Planes dietéticos</h1>
             <ul>
             {data === null
              ? (<div>cargando...</div>)

@@ -1,4 +1,4 @@
-import { useParams, Link } from "react-router-dom";
+import { useParams, useNavigate} from "react-router-dom";
 import { useDiet } from "../context/DietContext.jsx";
 import { useState, useEffect } from "react";
 import {fetchData} from '../middleware/middleware.js'
@@ -7,6 +7,7 @@ import HeaderAdmin from "./HeaderAdmin.jsx";
 function UpdatePlan (){
     const {token} = useDiet();
     const {id, id_plan} = useParams();
+    const navigate = useNavigate();
     const [data, setData] = useState(null)
     const [nombre, setNombre] = useState('');
     const [descripcion, setDescripcion] = useState('');
@@ -123,15 +124,19 @@ function UpdatePlan (){
 
     }
 
+    
     return(
         <>
             <HeaderAdmin />
-            <h1>Plan Actualizar</h1>
+            <h2>Actualizar Plan Dietético</h2>
+            
+            <button onClick={()=> navigate(-1)}>Volver</button>
 
             {data !== null && (
+                 <div className="containerHome">
                 <form onSubmit={handleSubmit} className="formClass">
                 <div className="formRow">
-                    <label>Nombre:</label>
+                    <label className="labelform">Nombre:</label>
                     <input
                         type='text'
                         value={nombre}
@@ -140,7 +145,7 @@ function UpdatePlan (){
                     </input>
                 </div>
                 <div className="formRow">
-                    <label>Descripción:</label>
+                    <label className="labelform">Descripción:</label>
                     <input
                         type='text'
                         value={descripcion}
@@ -149,7 +154,7 @@ function UpdatePlan (){
                     </input>
                 </div>
                 <div className="formRow">
-                    <label>Fecha:</label>
+                    <label className="labelform">Fecha:</label>
                     <input
                         type='date'
                         value={fecha}
@@ -159,7 +164,7 @@ function UpdatePlan (){
                 </div>
 
                 <div className="formRow">
-                    <label>Dia1:</label>
+                    <label className="labelform">Dia1:</label>
                     <select value={selOptdia1} onChange={(e)=> setSelOptdia1(e.target.value)}>
                         {optdia1.map(option => (
                             <option key={option.id} value={option.id}>{option.titulo}</option>
@@ -167,7 +172,7 @@ function UpdatePlan (){
                     </select>
                 </div>
                 <div className="formRow">
-                    <label>Dia2:</label>
+                    <label className="labelform">Dia2:</label>
                     <select value={selOptdia2} onChange={(e)=> setSelOptdia2(e.target.value)}>
                         {optdia2.map(option => (
                             <option key={option.id} value={option.id}>{option.titulo}</option>
@@ -175,7 +180,7 @@ function UpdatePlan (){
                     </select>
                 </div> 
                 <div className="formRow">
-                    <label>Dia3:</label>
+                    <label className="labelform">Dia3:</label>
                     <select value={selOptdia3} onChange={(e)=> setSelOptdia3(e.target.value)}>
                         {optdia3.map(option => (
                             <option key={option.id} value={option.id}>{option.titulo}</option>
@@ -183,7 +188,7 @@ function UpdatePlan (){
                     </select>
                 </div>
                 <div className="formRow">
-                    <label>Dia4:</label>
+                    <label className="labelform">Dia4:</label>
                     <select value={selOptdia4} onChange={(e)=> setSelOptdia4(e.target.value)}>
                         {optdia4.map(option => (
                             <option key={option.id} value={option.id}>{option.titulo}</option>
@@ -191,7 +196,7 @@ function UpdatePlan (){
                     </select>
                 </div>
                 <div className="formRow">
-                    <label>Dia5:</label>
+                    <label className="labelform">Dia5:</label>
                     <select value={selOptdia5} onChange={(e)=> setSelOptdia5(e.target.value)}>
                         {optdia5.map(option => (
                             <option key={option.id} value={option.id}>{option.titulo}</option>
@@ -199,7 +204,7 @@ function UpdatePlan (){
                     </select>
                 </div>
                 <div className="formRow">
-                    <label>Dia6:</label>
+                    <label className="labelform">Dia6:</label>
                     <select value={selOptdia6} onChange={(e)=> setSelOptdia6(e.target.value)}>
                         {optdia6.map(option => (
                             <option key={option.id} value={option.id}>{option.titulo}</option>
@@ -207,7 +212,7 @@ function UpdatePlan (){
                     </select>
                 </div> 
                 <div className="formRow">
-                    <label>Dia7:</label>
+                    <label className="labelform">Dia7:</label>
                     <select value={selOptdia7} onChange={(e)=> setSelOptdia7(e.target.value)}>
                         {optdia7.map(option => (
                             <option key={option.id} value={option.id}>{option.titulo}</option>
@@ -218,6 +223,8 @@ function UpdatePlan (){
                 
                 <button type='submit'>Actualizar</button>                
             </form>
+
+            </div>
             )}
            
             </>

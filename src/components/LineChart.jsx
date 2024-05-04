@@ -35,11 +35,11 @@ function LineChart({data, citas, label}) {
                 data: data,
                 tension: 1,
                 fill: true,
-                boderColor: 'rgb(41, 115,212)',
-                backgroundColor: 'rgba(41, 115,212, 0.5)',
+                boderColor: '#42ACDC',
+                backgroundColor: 'rgba(66, 172, 220, 0.5)',
                 pointRadius: 2,
-                pointBorderColor: '#568bff',
-                pointBackgroundColor: '#568bff',            
+                pointBorderColor: '#1E6790',
+                pointBackgroundColor: '#1E6790',            
             }
         ]
     }
@@ -47,10 +47,10 @@ function LineChart({data, citas, label}) {
     const misoptions ={
         scales: {
             y: {
-                ticks: {color : '#568bff'}
+                ticks: {color : '#1E6790'}
             },
             x: {
-                ticks:{color : '#568bff'}
+                ticks:{color : '#1E6790'}
             }
         },
         plugins:{

@@ -36,7 +36,7 @@ function MyAgenda (){
     return(
         <>
             <Header id={id}/>
-            <h1>MyAgenda</h1> 
+            <h1>Agenda</h1> 
             <CalendarApp events={events} />
 
         </>

@@ -8,18 +8,17 @@ dayjs.locale('es')
 function CalendarApp ({events}){
 
     const localizer = dayjsLocalizer(dayjs)
-    console.log('events en calendar', events)
-    
+     
         return(
             <>
-                <div style={{height: '400px', width:'400px'}}>
+                <div style={{height: '350px', width:'350px'}}>
                     <Calendar 
                      localizer={localizer}
                      events={events}
                      views={['month', 'week', 'day']}
                      messages={{
-                        next: "Siguiente",
-                        previous: "Anterior",
+                        next: "Sig.",
+                        previous: "Ant.",
                         today: "Hoy",
                         month: "Mes",
                         week: "Semana",

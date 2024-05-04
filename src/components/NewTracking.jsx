@@ -80,7 +80,7 @@ function NewTracking (){
     return(
         <>
         <HeaderAdmin />
-        <h3>Nuevo seguimiento {nombre} </h3>
+        <h3>Nuevo seguimiento {nombre} </h3> 
         <div className="nt-top">
             <form onSubmit={handleSubmit} className="formClass">
                 <div className="formRow">

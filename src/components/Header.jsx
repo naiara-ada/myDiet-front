@@ -9,10 +9,10 @@ function Header ({id}){
             {urlactual.pathname !== '/' && (
                 <nav className='navClass'>
                     
-                    <Link to={`/user/${id}/alldietary`}>Mis Dietas</Link>
-                    <Link  to={`/user/${id}/mytracking`}>Mi seguimiento</Link>
-                    <Link  to={`/user/${id}/myagenda`}>Mi agenda</Link>
-                    <Link  to='/'>LogOut</Link>
+                    <button><Link className='linkClass' to={`/user/${id}/alldietary`}>Planes Dietéticos</Link></button>
+                    <button><Link className='linkClass' to={`/user/${id}/mytracking`}>Mi Seguimiento</Link></button>
+                    <button><Link  className='linkClass' to={`/user/${id}/myagenda`}>Mi Agenda</Link></button>
+                    <button><Link  className='linkClass' to='/'>LogOut</Link></button>
                 </nav>
             )}
             

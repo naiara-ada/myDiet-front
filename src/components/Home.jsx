@@ -33,27 +33,30 @@ function Home (){
     }
     
     return(
-        <form>
-             <label>Email</label>
-            <input 
-                type="email"
-                id="email"
-                name="email"
-                value={inputEmail}
-                onChange={(e) => setInputEmail(e.target.value)}
-                required
-            />
-            <label>Password</label>
-            <input 
-                type="password"
-                id="password"
-                name="password"
-                value={inputPassword}
-                onChange={(e) => setInputPassword(e.target.value)}
-                required
-            />
-            <button onClick={signInEmail}>Ingresar</button>
-        </form>
+        <div className="containerHome">
+            
+                <form className="formClass">
+                    <label className="labelform">Email</label>
+                    <input 
+                        type="email"
+                        id="email"
+                        name="email"
+                        value={inputEmail}
+                        onChange={(e) => setInputEmail(e.target.value)}
+                        required
+                    />
+                    <label className="labelform">Password</label>
+                    <input 
+                        type="password"
+                        id="password"
+                        name="password"
+                        value={inputPassword}
+                        onChange={(e) => setInputPassword(e.target.value)}
+                        required
+                    />
+                    <button onClick={signInEmail}>Ingresar</button>
+                </form>
+        </div>
     )
 }
 

@@ -8,12 +8,11 @@ function User (){
     const urlDiet = import.meta.env.VITE_URL+'user'
     const [data, setData] = useState(null)
     const {token} = useDiet();
-    console.log('user de diet',token)
+    
     
     const callFetchData = async () =>{
         const resData = await fetchData(token, urlDiet)
         console.log(resData)
-        //getUserId(resData.id)
         setData(resData)
     }
     useEffect(() => {
@@ -25,7 +24,7 @@ function User (){
              ? (<div>cargando...</div>)
              : (
                 <div>
-                <h1>User</h1>
+                <h1>{data.Nombre} {data.Apellido}</h1>
                 <div className="btnContainer">
                     <Boton id={data.id} url={`${data.id}/alldietary`} text='Mis Dietas'/>
                     <Boton id={data.id} url={`${data.id}/mytracking`} text='Mi Seguimiento' vtoken={token}/> 
