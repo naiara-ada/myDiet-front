@@ -1,5 +1,5 @@
 import { useDiet } from "../context/DietContext.jsx";
-import { useParams,Link} from "react-router-dom";
+import { useParams, useNavigate} from "react-router-dom";
 import { useEffect, useState} from "react";
 import Recetas from './Recetas.jsx'
 import { Utensils } from 'lucide-react';
@@ -12,6 +12,7 @@ function Dietary (){
     const {id, id_plan} = useParams();
     const urlDiet = import.meta.env.VITE_URL+`user/${id}/alldietary/${id_plan}`
     const [data, setData] = useState(null);
+    const navigate = useNavigate();
     
     
     const [desayunoAbierto, setDesayunoAbierto] = useState(false);
@@ -44,13 +45,11 @@ function Dietary (){
 
     const callFetchData = async () =>{
         const resData = await fetchData(token, urlDiet)
-        setData(resData)
-        
+        setData(resData)        
     }
 
-    console.log(data);
-    useEffect(() => {
-       
+   
+    useEffect(() => {       
        callFetchData()
       }, [])
      
@@ -58,7 +57,8 @@ function Dietary (){
 
         <>
             <Header id={id}/>
-            <h1>Mis dietas</h1>
+            <h2>Mis dietas</h2>
+            <button onClick={()=> navigate(-1)}>Volver</button>
             {data === null
                 ? (<div>cargando...</div>)
                 : (
@@ -68,24 +68,27 @@ function Dietary (){
                                 <h3>Desayunos</h3>  
                                 <ul>                  
                                     {data[0].map((desayuno, index) =>(
-                                        <div key={desayuno.id}>
-                                            <li  key={index}className="liDietary">{desayuno.Titulo}<button className='btnDietary' onClick={() => abrirModalDesayuno(index)}> <Utensils size={18} /></button></li>
+                                        <div key={`${desayuno.id}-${index}`}>
+                                           <button className='btnDietary' onClick={() => abrirModalDesayuno(index)}> 
+                                                <li>{desayuno.Titulo} <Utensils size={18} /></li>
+                                            </button>
                                             {desayunoAbierto && index === indexDesayunoAbierto && (
-                                                <Recetas key={index +1} onClose={() => setDesayunoAbierto(false)} data={data[0]} id={indexDesayunoAbierto}/>
+                                                <Recetas onClose={() => setDesayunoAbierto(false)} data={data[0]} id={indexDesayunoAbierto}/>
                                             )}
                                         </div>
                                     ))}
                                 </ul>
-                            </div>
-                        
+                            </div>                       
                          
                             
                             <div>
                                 <h3>Comidas</h3>
                                 <ul>                                           
                                     {data[1].map((comida, index) =>(
-                                        <div key={comida.id}>
-                                            <li>{comida.Titulo}<button onClick={()=> abrirModalComida(index)}><Utensils size={18} /></button></li>
+                                        <div key={`${comida.id}-${index}`}>
+                                            <button className='btnDietary' onClick={()=> abrirModalComida(index)}>
+                                                <li >{comida.Titulo}<Utensils size={18} /></li>
+                                            </button>
                                             {comidaAbierto && index === indexComidaAbierto && (
                                                 <Recetas onClose={() => setComidaAbierto(false)} data={data[1]} id={indexComidaAbierto}/>
                                             )}
@@ -98,8 +101,10 @@ function Dietary (){
                                 <h3>Cenas</h3>
                                 <ul>                   
                                     {data[2].map((cena, index) =>(
-                                        <div key={cena.id}>
-                                            <li>{cena.Titulo}<button onClick={()=> abrirModalCena(index)}><Utensils size={18}  /></button></li>
+                                        <div key={`${cena.id}-${index}`}>
+                                            <button className='btnDietary' onClick={()=> abrirModalCena(index)}>
+                                                <li >{cena.Titulo}<Utensils size={18}  /></li>
+                                                </button>
                                             {cenaAbierto && index === indexCenaAbierto && (
                                                 <Recetas onClose={() => setCenaAbierto(false)} data={data[2]} id={indexCenaAbierto}/>
                                             )}

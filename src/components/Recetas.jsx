@@ -18,8 +18,8 @@ function Recetas ({onClose, data, id}){
                 <button onClick={onClose} className='botonModal'><X /></button>
                 <div className='textModal'>
                     <h3>{data[id].Titulo}</h3>
-                    <p>Ingredientes: {data[id].Ingredientes}</p>
-                    <p>Preparación: {data[id].Preparacion} </p>
+                    <p><span>Ingredientes:</span> {data[id].Ingredientes}</p>
+                    <p><span>Preparación:</span> {data[id].Preparacion} </p>
                 </div>
             </div>
         </div>

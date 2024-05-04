@@ -3,6 +3,7 @@ import { useState } from "react";
 import { auth } from '../config/firebase.js';
 import { useNavigate } from "react-router-dom";
 import { useDiet } from "../context/DietContext.jsx";
+import logo from '../assets/img/logo.png'
 
 function Home (){
     const [inputEmail, setInputEmail] = useState('');
@@ -10,6 +11,7 @@ function Home (){
     const navigate = useNavigate();
     const {token, loginToken} = useDiet();
     auth.signOut();
+    
         
     const signInEmail = async (e)=>{
     e.preventDefault();
@@ -33,8 +35,14 @@ function Home (){
     }
     
     return(
+
+        <>
+        <div className="encabezado">
+            <img className='logoHome' src={logo} alt='Mis dietas'/>
+            <h1 >Mis Dietas</h1>
+        </div>        
         <div className="containerHome">
-            
+
                 <form className="formClass">
                     <label className="labelform">Email</label>
                     <input 
@@ -57,6 +65,7 @@ function Home (){
                     <button onClick={signInEmail}>Ingresar</button>
                 </form>
         </div>
+        </>
     )
 }
 

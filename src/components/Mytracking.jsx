@@ -33,7 +33,8 @@ function Mytracking (){
     return(
         <>
         <Header id={id}/>
-        <h1>Mi Seguimiento</h1> 
+        <div className="containerAgenda">
+        <h2>Mi Seguimiento</h2> 
         {data === null
          ? (<div>cargando...</div>)
          : (<div>
@@ -54,7 +55,7 @@ function Mytracking (){
             )
         }
         
-        
+        </div>
         </>
         
 
