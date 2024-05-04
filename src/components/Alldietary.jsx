@@ -28,7 +28,7 @@ function Alldietary (){
              ? (<div>cargando...</div>)
              : (data.map((item, index) =>(
                 <li key={index}>
-                    <Link to={`${item.id}`}>{item.Nombre}</Link>
+                    <button ><Link className='linkClass' to={`${item.id}`}>{item.Nombre}</Link></button>
                 </li>
             )))
             }

@@ -41,8 +41,32 @@
   color: #888;
 }
 
+.containerHeader{
+  display: flex;
+  align-items: center;
+}
+
+.containerAgenda{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+.encabezado{
+  display: flex;
+}
+
+
+.encabezado h1{
+  color:#2B99CC;
+  text-shadow: #185474 2px 2px 2px;
+  font-style: italic;
+}
+
 .navClass{
   display: flex;
+  flex-wrap: wrap;
   gap:10px
 }
 
@@ -108,7 +132,17 @@
   align-items: flex-start; /* Este valor corresponde a items-center */
   margin: 0 1rem; /* Estos valores corresponden a mx-4 */
   color: white;
-  opacity: 0.9; 
+  opacity: 0.9;
+  -webkit-box-shadow: 10px 10px 15px -3px rgba(25,71,97,1);
+-moz-box-shadow: 10px 10px 15px -3px rgba(25,71,97,1);
+box-shadow: 10px 10px 15px -3px rgba(25,71,97,1);
+}
+.textModal h3{
+  align-self: center;
+}
+
+.textModal span{
+  font-weight: bold;
 }
 
 .formClass{
@@ -180,14 +214,14 @@
   gap: 5px
   
 }
-.liDietary{
-  display: flex;
-  flex-wrap: wrap;
-  gap: 5px;
-}
+
 
 .btnDietary{
   padding: 10px;
+  gap: 5px;
+}
+.btnDietary li{
+  color:#1E6790;
 }
 
 .containerHome{
