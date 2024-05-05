@@ -71,6 +71,8 @@ Una vez ingresado el email y la contraseña correspondiente, llegamos a otra pá
 - Mi Seguimiento: Una vez clicada esta opción  nos llevará a una página llamada Mi Seguimiento, donde tendremos tambien la barra de navegación citada anteriormente, el título de la página `"Mi Seguimiento"`, y de bajo del título unas graficas donde no irá mostrando nuestros avances en tema de peso y tanto por ciento de grasa corporal.
 - Mi agenda: Por último en esta opción, se nos muestra una página llamada `Agenda` en la cual se nos muestra un calendario donde estarán apuntadas la citas que tenemos reservadas con el dietista, así como pinchando en el día de la cita, se habilita una vista detalle del día en cuestión.
 
+## Funcionamiento de la aplicación desde el Administrador
+
 - Aplicación desde el Administrador:
 
 Al igual que en el apartado anterior, accederemos a nuestra aplicación mediante un correo y una contraseña de tipo Administrador, una vez dentro, llegaremos a la primera página que es la de `Dashboard`, donde nos aparecen cuatro botones:
