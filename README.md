@@ -1,10 +1,63 @@
+# Mydiet-front
+
 Nuestra aplicación consiste en una web donde un administrador te asigna unos planes de dieta para cada dia junto con recetas para todos los días, el administrador tiene la capacidad de dar altas de nuevo usuario, de planes, recetas, citas; luego el usuario, con una contraseña asignada por el administrador podrá ver las citas que tiene con el dietista, los planes asignados a todos los días y las recetas de cada plato asignado.
 
 ## Índice
 
+- [Dependencias utilizadas en el Front](#dependencias-utilizadas)
 - [Estructura de archivos](#estructura-de-archivos)
 - [Funcionamiento de la aplicación desde el Usuarrio](#funcionamiento-de-la-aplicación-desde-el-usuario)
 - [Funcionamiento de la aplicación desde el Administrador](#funcionamiento-de-la-aplicación-desde-el-Administrador)
+
+## Dependencias utilizadas
+
+En este apartado, comentaremos las dependecias que nuestro proyecto necesita para poder funcionar, junto a una breve explicación de su uso:
+
+- `vite`: Es una herramienta que hace que tus módulos fuentes tengan un formato que pueda ejecutarse en el navegador lo más rápido posible.
+    - Instalación:
+                 Se instala desde nuestra terminal; `"$ npm i vite"`.
+
+- `react`: Es una biblioteca que se utiliza generalmente para construir la interfaz de usuario(frontend) de las aplicaciones web. Ofrece una rápida renderización de las páginas y un mayor rendimiento.
+    - Instalación:
+                 Se instala desde nuestra terminal; `"$ npm i react"`.
+
+- `react-router-dom`: Es un paquete npm que le permite implementar enrutamiento dinámico en una aplicación web.
+    - Instalación:
+                 Se instala desde nuestra terminal; `"$ npm i react-router-dom"`.
+
+- `react-dom`: Es un método que  es útil para leer valores fuera del DOM, como por ejemplo valores de formularios, o realizar mediciones del DOM.
+    - Instalación:
+                 Se instala desde nuestra terminal; `"$ npm i react-dom"`.
+
+- `react-chartjs-2`: Es un componente de React, biblioteca de gráficos.
+    - Instalación:
+                Se instala desde nuestra terminal; `"$ npm i react-chartjs-2"`.
+
+- `react-big-calendar`: Un componente de calendario de eventos creado para React y diseñado para navegadores modernos y utiliza flexbox en lugar del enfoque clásico de subtítulos de tablas.
+    - Instalación:
+                Se instala desde nuestra terminal; `"$ npm i react-big-calendar"`.
+
+- `lucide-react`: Lucide es una colección de archivos SVG . Esto significa que puedes usar los íconos de Lucide de la misma manera que puedes usar los SVG.
+    - Instalación: Se instala desde nuestra terminal; `"$ npm i lucide-react"`.
+
+- `lucide`: Un paquete de biblioteca de iconos Lucide para aplicaciones web y javascript.
+    - Instalación: Se instala desde nuestra terminal; `"$ npm i lucide"`.
+
+- `firebase`: Es una base de datos NoSQL alojada en la nube que te permite almacenar y sincronizar datos entre tus usuarios en tiempo real.
+    - Instalación: Se instala desde nuestra terminal; `"$ npm i firebase"`.
+
+- `dayjs`: Es una librería JavaScript liviana que permite el manejo fácil y eficiente de fechas y horas.
+    - Instalación: Se instala desde nuestra terminal; `"$ npm i dayjs"`.
+
+- `chart.js`: Biblioteca gráfica.
+    - Instalación: Se instala desde nuestra terminal; `"$ npm i chart.js"`.
+
+***Conclusión final***
+Una vez bajado el repositorio MYDIET-FRONT a nuetro equipo, con ejecutar este comando desde nuestra terminal `"$ npm i"`, se supone que se instalarian todas las dependencias de nuestra apliación.
+
+
+
+
 
 ## Estructura de archivos
 
