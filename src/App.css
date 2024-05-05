@@ -75,6 +75,7 @@
   flex-wrap: wrap;
   justify-content: center;
   gap: 20px;
+  margin-top: 10px;
 
   
 }
@@ -168,6 +169,7 @@ box-shadow: 10px 10px 15px -3px rgba(25,71,97,1);
   border:none;
 }
 
+
 .containerGrid{
   display: flex;
   flex-direction: column;
@@ -208,6 +210,10 @@ box-shadow: 10px 10px 15px -3px rgba(25,71,97,1);
   border-bottom: 1px solid #1E6790; 
   padding-bottom: 5px;
 }
+
+.containerDiary input{
+  border: none;
+}
 .lineDiary{
   display: flex;
   margin: 10px;
@@ -243,7 +249,7 @@ box-shadow: 10px 10px 15px -3px rgba(25,71,97,1);
 }
 
 .linkClass{
-  color:#185474;
+  color:#2B99CC;
   border-radius: 8px;
   border: 1px solid transparent;
   padding: 5px;
@@ -252,7 +258,7 @@ box-shadow: 10px 10px 15px -3px rgba(25,71,97,1);
 }
 
 .linkClass:hover{
-  color:#2AACDF;
+  color:#1c7bad;
 }
 
 .linkClassBtn{

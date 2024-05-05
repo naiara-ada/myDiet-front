@@ -1,10 +1,8 @@
 
-import { useDiet } from "../context/DietContext.jsx";
 import Boton from "./Boton.jsx";
 
 function Dashboard (){
-    const {token} = useDiet();
-   
+      
     return(
         <>
         

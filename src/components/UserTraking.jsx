@@ -41,12 +41,13 @@ function UserTracking (){
     return (
         <>
         <HeaderAdmin />
+        <div className="containerAgenda">
         <h2>Seguimiento: {nombre}</h2>
         {data === null
          ? (<div>cargando...</div>)
          : (<div>
-            <button><Link to='newtracking' state={{ text: nombre }}>Nuevo seguimiento</Link></button>
-            <button><Link to='getuserbyid' state={{text: nombre}}>Actualizar Usuario</Link></button>
+            <button><Link  className='linkClass' to='newtracking' state={{ text: nombre }}>Nuevo seguimiento</Link></button>
+            <button><Link className='linkClass' to='getuserbyid' state={{text: nombre}}>Actualizar Usuario</Link></button>
             <div className="containerTracking">
             
             <div className="tracking">
@@ -59,24 +60,23 @@ function UserTracking (){
                     <LineChart data={grasa} citas={fechas} label='Grasa'/>
                 </div> 
                     
-            </div></div>
-            
+            </div></div>            
          
             )
         }
-            <div>
-            <button><Link to='newPlan' state={{ text: nombre }}>Nuevo Plan</Link></button>
+            <div className="containerHeader">
+            <button><Link className='linkClass' to='newPlan' state={{ text: nombre }}>Nuevo Plan</Link></button>
             <ul>
                 {dataPlan !== null &&(
                     (dataPlan.map((item, index)=>(
                         <li key={index}>
-                            <Link to={`${item.id}`}>{item.Nombre}</Link>
-
+                            <Link className='linkClass' to={`${item.id}`}>{item.Nombre}</Link>
                         </li>
                     )))
-
                 )}
             </ul>
+            </div>
+
             </div>
         </>
     )

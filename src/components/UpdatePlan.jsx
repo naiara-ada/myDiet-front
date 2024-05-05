@@ -114,7 +114,7 @@ function UpdatePlan (){
             })
               
             if(response.ok){
-                console.log('ok')
+                navigate(-1)
             }            
         } catch (error) {
             console.log(error)
@@ -128,9 +128,7 @@ function UpdatePlan (){
     return(
         <>
             <HeaderAdmin />
-            <h2>Actualizar Plan Dietético</h2>
-            
-            <button onClick={()=> navigate(-1)}>Volver</button>
+            <h2>Actualizar Plan Dietético</h2>                  
 
             {data !== null && (
                  <div className="containerHome">

@@ -1,9 +1,9 @@
-import {Link} from 'react-router-dom'
 import logo from '../assets/img/logo.png'
-import { useLocation, useParams } from 'react-router-dom';
+import { useLocation, useNavigate, Link } from 'react-router-dom';
 
 function Header ({id}){
     const urlactual = useLocation();
+    const navigate = useNavigate();
     return(
         <>
             <div className='containerHeader'>
@@ -14,6 +14,7 @@ function Header ({id}){
                     <button><Link className='linkClass' to={`/user/${id}/mytracking`}>Mi Seguimiento</Link></button>
                     <button><Link  className='linkClass' to={`/user/${id}/myagenda`}>Mi Agenda</Link></button>
                     <button><Link  className='linkClass' to='/'>LogOut</Link></button>
+                    <button onClick={()=> navigate(-1)}>Volver</button>
                 </nav>
             )}
             </div>

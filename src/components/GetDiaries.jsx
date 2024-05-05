@@ -28,7 +28,7 @@ function GetDiaries (){
             <h1>Diarios</h1>
             {data !== null && (
                 <>
-                    <button><Link to='/dashboard/diaries/newdiary' >Nuevo diario</Link></button>
+                    <button><Link className='linkClass' to='/dashboard/diaries/newdiary' >Nuevo diario</Link></button>
                     <div className='containerGrid'>
                         {data.map(item =>(
                             <LineDiary key={item.id} item={item}/>

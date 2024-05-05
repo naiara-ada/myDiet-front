@@ -30,7 +30,7 @@ body {
   background-color: #fbfafc;
   background-image: url('./assets/img/fondot.png');
   background-size: cover;
-  color: #185474
+  color: #1c7bad
   
   
 }
@@ -47,7 +47,7 @@ button {
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: #1a1a1a;
+  background-color: #1c7bad;
   cursor: pointer;
   transition: border-color 0.25s;
 }
@@ -79,13 +79,19 @@ li {
 input{
   border-radius: 10px;
   padding: 5px 10px;
-  border : 1px solid #185474;
+  border : 1px solid #1c7bad;
+  color: #1c7bad;  
+  background-color: #fbfafc;
+}
+input[type="date"]::-webkit-calendar-picker-indicator {
+  color: #1c7bad; /* Cambiar el color del icono del calendario a azul */
 }
 
 select{
   border-radius: 10px;
   padding: 5px 10px;
-  border : 1px solid #185474;
+  border : 1px solid #1c7bad;
+  color: #1c7bad;
 }
 
 .logoHome{

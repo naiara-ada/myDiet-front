@@ -75,7 +75,7 @@ function LineTracking ({item}){
                     value={grasa} 
                     ref={grasaRef} 
                     onChange={(e)=>setGrasa(e.target.value)}/>
-                <PencilLine className='iconClass' color='blue' onClick={handleUpdate} />
+                <PencilLine className='iconClass' color='#1c7bad' onClick={handleUpdate} />
                     
                 
                 </div>

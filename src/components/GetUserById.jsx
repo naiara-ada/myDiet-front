@@ -70,7 +70,6 @@ function getUserById (){
         <>
         <HeaderAdmin />
         <h2>Update: {nombre}</h2>
-        <button onClick={()=> navigate(-1)}>Volver</button>
         <div className='containerHome'>
             <div className='lineDiary'>
                 <label className='labelform'>Nombre: </label>

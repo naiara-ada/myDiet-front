@@ -57,13 +57,12 @@ function Dietary (){
 
         <>
             <Header id={id}/>
+            <div className="containerAgenda">
             <h2>Mis dietas</h2>
-            <button onClick={()=> navigate(-1)}>Volver</button>
             {data === null
                 ? (<div>cargando...</div>)
                 : (
-                    <div >
-                        
+                    <div >                        
                             <div>
                                 <h3>Desayunos</h3>  
                                 <ul>                  
@@ -115,7 +114,8 @@ function Dietary (){
                         
                     </div>
                 )
-            }            
+            }       
+            </div>     
         </>
     )
 }

@@ -55,7 +55,7 @@ function NewRecipe (){
     return(
         <>
         <HeaderAdmin />
-        <h1>Nueva Receta</h1>
+        <h2>Nueva Receta</h2>
         <form onSubmit={handleSubmit} className="formClass">
             <div className="formRow">
                 <label>Tipo receta</label>

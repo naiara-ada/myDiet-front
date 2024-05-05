@@ -11,7 +11,6 @@ function Recetas ({onClose, data, id}){
             onClose();
         }
     }
-    console.log('*****DATA RECETAS*****',data);
     return(
         <div ref={recetasRef} onClick={closeRecetas} className="fondoModal">
             <div className='modal'>

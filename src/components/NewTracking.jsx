@@ -84,7 +84,7 @@ function NewTracking (){
         <div className="nt-top">
             <form onSubmit={handleSubmit} className="formClass">
                 <div className="formRow">
-                    <label>Descripción</label>
+                    <label className="labelform">Descripción</label>
                     <input 
                         type='text'
                         value={descripcion}
@@ -93,7 +93,7 @@ function NewTracking (){
                     />
                 </div>
                 <div className="formRow">
-                    <label>Fecha</label>
+                    <label className="labelform">Fecha</label>
                     <input 
                         type='date'
                         value={fecha}
@@ -102,7 +102,7 @@ function NewTracking (){
                     />
                 </div>
                 <div className="formRow">
-                    <label>Hora</label>
+                    <label className="labelform">Hora</label>
                     <input 
                         type='time'
                         value={hora}

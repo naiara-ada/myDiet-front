@@ -23,12 +23,13 @@ function GetUsers (){
     return(
         <>
         <HeaderAdmin />
+        <div className='containerAgenda'>
         <h2>Mis Pacientes</h2>
         {data === null
         ? (<div>cargando...</div>)
         : (
             <>
-            <button><Link to='newuser'>Nuevo Paciente</Link> </button>
+            <button><Link  className='linkClass' to='newuser'>Nuevo Paciente</Link> </button>
                 <div className='btnContainer'>
                 {data.map(item=>(
                     <Boton key={item.id} url={`${item.id}`} text={`${item.Nombre} ${item.Apellido}`} />
@@ -39,6 +40,7 @@ function GetUsers (){
         )
         
         }
+        </div>
         </>
     )
 }

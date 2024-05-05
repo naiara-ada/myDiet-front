@@ -59,8 +59,7 @@ function NewDiary () {
             Comida_id: selOptionComida,
             Cena_id: selOptionCena
         }
-        console.log('payload', payload)
-        try {
+         try {
             const response = await fetch(urlDiet, {
                 method: 'POST',
                 headers:{
@@ -83,7 +82,7 @@ function NewDiary () {
     return(
         <>
         <HeaderAdmin />
-        <h1> Nuevo Diario</h1>
+        <h2> Nuevo Diario</h2>
         {data !== null && (
             <>
             <form onSubmit={handleSubmit} className="formClass">

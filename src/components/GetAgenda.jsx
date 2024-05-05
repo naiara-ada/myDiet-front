@@ -36,8 +36,10 @@ function GetAgenda (){
     return (
         <>
             <HeaderAdmin />
-            <h1>Agenda</h1>
-            <CalendarApp events={events} />
+            <div className="containerAgenda">
+                <h2>Agenda</h2>
+                <CalendarApp events={events} />
+            </div>
         </>
     )
 }

@@ -143,8 +143,8 @@ function LineDiary ({item}){
 
                     </div>
                 )}
-                <button><PencilLine className='iconClass' size={18} color='blue' onClick={handleUpdate}/></button>
-                <button><Trash2 className='iconClass' size={18} color='blue' onClick={handleDeleteDiary}/></button>
+                <button><PencilLine className='iconClass' size={18} color='#1c7bad' onClick={handleUpdate}/></button>
+                <button><Trash2 className='iconClass' size={18} color='#1c7bad' onClick={handleDeleteDiary}/></button>
 
                     
         </div>       
