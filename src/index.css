@@ -2,15 +2,6 @@
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 }
 
 a {
@@ -30,6 +21,7 @@ body {
   background-color: #fbfafc;
   background-image: url('./assets/img/fondot.png');
   background-size: cover;
+  background-attachment: fixed;
   color: #1c7bad
   
   
@@ -47,7 +39,7 @@ button {
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: #1c7bad;
+  background-color: transparent;
   cursor: pointer;
   transition: border-color 0.25s;
 }
@@ -59,32 +51,41 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #185474;
-  }
-  button {
-    background-color: transparent;
-  }
-}
 
 li {
   list-style: none;
 }
 
-input{
+input, textarea{
   border-radius: 10px;
   padding: 5px 10px;
   border : 1px solid #1c7bad;
   color: #1c7bad;  
   background-color: #fbfafc;
 }
+
 input[type="date"]::-webkit-calendar-picker-indicator {
-  color: #1c7bad; /* Cambiar el color del icono del calendario a azul */
+  display: none; 
+}
+input[type="date"] {
+  background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiMxYzdiYWQiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBjbGFzcz0ibHVjaWRlIGx1Y2lkZS1jYWxlbmRhciI+PHBhdGggZD0iTTggMnY0Ii8+PHBhdGggZD0iTTE2IDJ2NCIvPjxyZWN0IHdpZHRoPSIxOCIgaGVpZ2h0PSIxOCIgeD0iMyIgeT0iNCIgcng9IjIiLz48cGF0aCBkPSJNMyAxMGgxOCIvPjwvc3ZnPg=='); 
+  background-position: right center; 
+  background-repeat: no-repeat;
+  padding-left: 10px;
+  padding-right: 20px;  
+  background-size: 20px; 
+}
+
+input[type="time"]::-webkit-calendar-picker-indicator {
+  display: none; 
+}
+
+input[type="time"] {
+  background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiMxYzdiYWQiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBjbGFzcz0ibHVjaWRlIGx1Y2lkZS1jbG9jay04Ij48Y2lyY2xlIGN4PSIxMiIgY3k9IjEyIiByPSIxMCIvPjxwb2x5bGluZSBwb2ludHM9IjEyIDYgMTIgMTIgOCAxNCIvPjwvc3ZnPg==');
+  background-position: right center; 
+  background-repeat: no-repeat; 
+  padding-right: 30px; 
+  background-size: 20px;
 }
 
 select{
@@ -98,3 +99,5 @@ select{
   width: 100px;
   height: 100px;
 }
+
+

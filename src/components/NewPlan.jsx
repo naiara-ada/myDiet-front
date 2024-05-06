@@ -205,7 +205,7 @@ function NewPlan (){
             </div>              
             
             
-            <button type='submit'>Añadir</button>                
+            <button className='btnLink form' type='submit'>Añadir</button>                
         </form>
 
 

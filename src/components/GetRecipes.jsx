@@ -44,42 +44,44 @@ useEffect(() => {
     return (
         <>
         <HeaderAdmin />
-        <h1>Recetas</h1>
-        {data === null
-             ? (<div>cargando...</div>)
-             : (
-                <div>
-                    <div className='botonesRecipes'>
-                        <button onClick={handleDesayuno}>Desayuno</button>
-                        <button onClick={handleComida}>Comida</button>
-                        <button onClick={handleCena}>Cena</button>
-                        <button><Link to='/dashboard/recipes/newrecipe' >Nueva receta</Link></button>
+        <div className='containerAgenda'>
+            <h2>Recetas</h2>
+            {data === null
+                ? (<div>cargando...</div>)
+                : (
+                    <div>
+                        <div className='botonesRecipes'>
+                            <button className='btnLink' onClick={handleDesayuno}>Desayuno</button>
+                            <button className='btnLink' onClick={handleComida}>Comida</button>
+                            <button className='btnLink' onClick={handleCena}>Cena</button>
+                            <button><Link className='linkClass' to='/dashboard/recipes/newrecipe' >Nueva receta</Link></button>
+                        </div>
+                        {showDesayuno && (
+                            <div className='containerGrid'>
+                            {data[0].map(item =>(
+                                <LineRecipe key={item.id} item={item} table='desayunos'/>
+                            ))}
+                            </div>
+                        )}
+                        {showComida && (
+                            <div className='containerGrid'>
+                            {data[1].map(item =>(
+                                <LineRecipe key={item.id} item={item} table='comidas'/>
+                            ))}
+                            </div>
+                        )}
+                        {showCena && (
+                            <div className='containerGrid'>
+                            {data[2].map(item =>(
+                                <LineRecipe key={item.id} item={item} table='cenas'/>
+                            ))}
+                            </div>
+                        )}
+                        
                     </div>
-                    {showDesayuno && (
-                        <div className='containerGrid'>
-                        {data[0].map(item =>(
-                            <LineRecipe key={item.id} item={item} table='desayunos'/>
-                        ))}
-                        </div>
-                    )}
-                    {showComida && (
-                        <div className='containerGrid'>
-                        {data[1].map(item =>(
-                            <LineRecipe key={item.id} item={item} table='comidas'/>
-                        ))}
-                        </div>
-                    )}
-                    {showCena && (
-                        <div className='containerGrid'>
-                        {data[2].map(item =>(
-                            <LineRecipe key={item.id} item={item} table='cenas'/>
-                        ))}
-                        </div>
-                    )}
-                    
-                </div>
-             )  
-        }
+                )  
+            }
+        </div>
         </>
     )
 }

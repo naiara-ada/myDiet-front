@@ -63,7 +63,7 @@ function Home (){
                         onChange={(e) => setInputPassword(e.target.value)}
                         required
                     />
-                    <button onClick={signInEmail}>Ingresar</button>
+                    <button className='btnLink form' onClick={signInEmail}>Ingresar</button>
                 </form>
         </div>
         </>

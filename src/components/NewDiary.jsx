@@ -82,12 +82,13 @@ function NewDiary () {
     return(
         <>
         <HeaderAdmin />
+        <div className='containerAgenda'>
         <h2> Nuevo Diario</h2>
         {data !== null && (
             <>
-            <form onSubmit={handleSubmit} className="formClass">
+            <form onSubmit={handleSubmit} className="formClass containerHome">
             <div className="formRow">
-                <label>Titulo:</label>
+                <label className="labelform">Titulo:</label>
                 <input
                     type='text'
                     value={nombre}
@@ -96,7 +97,7 @@ function NewDiary () {
                 </input>
             </div>
             <div className="formRow">
-                <label>Fecha:</label>
+                <label className="labelform">Fecha:</label>
                 <input
                     type='date'
                     value={fecha}
@@ -105,7 +106,7 @@ function NewDiary () {
                 </input>
             </div>
             <div className="formRow">
-                <label>Desayuno:</label>
+                <label className="labelform">Desayuno:</label>
                 <select value={selOptionDesayuno} onChange={(e)=> setSelOptionDesayuno(e.target.value)}>
                                 {optionsDesayuno.map(option => (
                                     <option key={option.id} value={option.id}>{option.titulo}</option>
@@ -113,7 +114,7 @@ function NewDiary () {
                 </select>
             </div>
             <div className="formRow">
-                <label>Comida:</label>
+                <label className="labelform">Comida:</label>
                 <select value={selOptionComida} onChange={(e)=> setSelOptionComida(e.target.value)}>
                                 {optionsComida.map(option => (
                                     <option key={option.id} value={option.id}>{option.titulo}</option>
@@ -121,20 +122,20 @@ function NewDiary () {
                             </select>
             </div>
             <div className="formRow">
-                <label>Cena:</label>
+                <label className="labelform">Cena:</label>
                 <select value={selOptionCena} onChange={(e)=> setSelOptionCena(e.target.value)}>
                                 {optionsCena.map(option => (
                                     <option key={option.id} value={option.id}>{option.titulo}</option>
                                 ))}
                             </select>
             </div>
-            <button type='submit'>Añadir</button>                
+            <button className='btnLink form' type='submit'>Añadir</button>                
         </form>
             
             </>
         )}
         
-        
+        </div>
         </>
     )
 }

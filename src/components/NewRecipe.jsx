@@ -55,40 +55,42 @@ function NewRecipe (){
     return(
         <>
         <HeaderAdmin />
-        <h2>Nueva Receta</h2>
-        <form onSubmit={handleSubmit} className="formClass">
-            <div className="formRow">
-                <label>Tipo receta</label>
-                <select required onChange={(e)=>setTipo(e.target.value)}>
-                    <option value='desayuno'>Desayuno</option>
-                    <option value='comida'>Comida</option>
-                    <option value='cena'>Cena</option>
-                </select>
-            </div>
-            <div className="formRow">
-            <label>Titulo:</label>
-            <textarea 
-                value={titulo}
-                onChange={(e)=>setTitulo(e.target.value)}
-                required
-            ></textarea>
-            </div>
-            <div className="formRow">
-            <label>Ingredientes:</label>
-            <textarea 
-                value={ingredientes}
-                onChange={(e)=>setIngredientes(e.target.value)}
-                required
-            ></textarea>
-            </div>
-            <div className="formRow">
-            <label>Preparación</label>
-            <textarea 
-                value={preparacion}
-                onChange={(e)=>setPreparacion(e.target.value)}
-            ></textarea></div>
-            <button type='submit'>Añadir</button>
-        </form>
+        <div className='containerAgenda'>
+            <h2>Nueva Receta</h2>
+            <form onSubmit={handleSubmit} className="formClass containerHome">
+                <div className="formRow">
+                    <label className="labelform">Tipo receta</label>
+                    <select required onChange={(e)=>setTipo(e.target.value)}>
+                        <option value='desayuno'>Desayuno</option>
+                        <option value='comida'>Comida</option>
+                        <option value='cena'>Cena</option>
+                    </select>
+                </div>
+                <div className="formRow contentForm">
+                <label className="labelform">Titulo</label>
+                <textarea className="textareaForm"
+                    value={titulo}
+                    onChange={(e)=>setTitulo(e.target.value)}
+                    required
+                ></textarea>
+                </div>
+                <div className="formRow contentForm">
+                <label className="labelform">Ingredientes</label>
+                <textarea className="textareaForm prueba"
+                    value={ingredientes}
+                    onChange={(e)=>setIngredientes(e.target.value)}
+                    required
+                ></textarea>
+                </div>
+                <div className="formRow contentForm">
+                <label className="labelform">Preparación</label>
+                <textarea className="textareaForm"
+                    value={preparacion}
+                    onChange={(e)=>setPreparacion(e.target.value)}
+                ></textarea></div>
+                <button  className='btnLink form' type='submit'>Añadir</button>
+            </form>
+        </div>
         </>
     )
 }

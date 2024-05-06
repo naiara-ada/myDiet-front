@@ -15,7 +15,7 @@ function HeaderAdmin () {
                     <button><Link className='linkClass' to='/dashboard/diaries'>Diarios</Link></button>
                     <button><Link className='linkClass' to='/dashboard/agenda'>Agenda</Link></button>
                     <button> <Link className='linkClass'  to='/'>LogOut</Link></button>
-                    <button onClick={()=> navigate(-1)}>Volver</button>
+                    <button className='btnLink' onClick={()=> navigate(-1)}>Volver</button>
                 </nav>
             </div>
 

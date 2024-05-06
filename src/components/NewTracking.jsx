@@ -80,51 +80,61 @@ function NewTracking (){
     return(
         <>
         <HeaderAdmin />
-        <h3>Nuevo seguimiento {nombre} </h3> 
-        <div className="nt-top">
-            <form onSubmit={handleSubmit} className="formClass">
-                <div className="formRow">
-                    <label className="labelform">Descripción</label>
-                    <input 
-                        type='text'
-                        value={descripcion}
-                        onChange={(e)=> setDescripcion(e.target.value)}
-                        required
-                    />
-                </div>
-                <div className="formRow">
-                    <label className="labelform">Fecha</label>
-                    <input 
-                        type='date'
-                        value={fecha}
-                        onChange={(e)=> setFecha(e.target.value)}
-                        required
-                    />
-                </div>
-                <div className="formRow">
-                    <label className="labelform">Hora</label>
-                    <input 
-                        type='time'
-                        value={hora}
-                        onChange={(e)=> setHora(e.target.value)}
-                        required
-                    />
-                </div>
-                <button type='submit'>Añadir</button>
-            </form>
-            
-            
-        </div>
-        <div className="nt-botton">
-            <div className="containerGrid">
+        <div className='containerAgenda'>
+            <h3>Nuevo seguimiento {nombre} </h3> 
+            <div className="nt-top">
+                <form onSubmit={handleSubmit} className="formClass containerHome">
+                    <div className="formRow">
+                        <label className="labelform">Descripción</label>
+                        <input 
+                            type='text'
+                            value={descripcion}
+                            onChange={(e)=> setDescripcion(e.target.value)}
+                            required
+                        />
+                    </div>
+                    <div className="formRow">
+                        <label className="labelform">Fecha</label>
+                        <input 
+                            type='date'
+                            value={fecha}
+                            onChange={(e)=> setFecha(e.target.value)}
+                            required
+                        />
+                    </div>
+                    <div className="formRow">
+                        <label className="labelform">Hora</label>
+                        <input 
+                            type='time'
+                            value={hora}
+                            onChange={(e)=> setHora(e.target.value)}
+                            required
+                        />
+                    </div>
+                    <button className='btnLink form' type='submit'>Añadir</button>
+                </form>
                 
-                {data !== null && (                        
-                    data.map(item =>(
-                        <LineTracking key={item.id} item={item}/>
-                    ))
-                )}
+                
             </div>
-        </div>      
+            <div className="nt-botton">
+                <div className="containerGrid">
+                    <div className="titulos">
+                        <label style={{width: '20px'}}>ID</label>
+                        <label style={{width: '175px'}}>Título</label> 
+                        <label style={{width: '60px'}}>Fecha</label>
+                        <label style={{width: '50px'}}>Hora</label><label>Peso</label>
+                        <label style={{width: '40px'}}>Grasa</label>
+                        <label style={{width: '40px'}}>Act</label>
+                    </div>
+                    
+                    {data !== null && (                        
+                        data.map(item =>(
+                            <LineTracking key={item.id} item={item}/>
+                        ))
+                    )}
+                </div>
+            </div>     
+        </div> 
         </>
     )
 }

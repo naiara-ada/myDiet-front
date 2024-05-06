@@ -34,8 +34,6 @@ function UpdatePlan (){
         const urlDiary = import.meta.env.VITE_URL+'dashboard/diaries'
         const resDiary = await fetchData(token, urlDiary);
 
-        console.log(resData)
-        console.log(resDiary)
         if (resData && resDiary){
             setNombre(resData[0].nombrePlan);
             setDescripcion(resData[0].Descripcion)
@@ -91,8 +89,7 @@ function UpdatePlan (){
 
       const handleSubmit = async (e)=>{
         e.preventDefault();
-        console.log('hola')
-              
+                      
         const payload={
             id: id_plan,
             Nombre: nombre,
@@ -100,8 +97,6 @@ function UpdatePlan (){
             Fecha: fecha,
             dias:[selOptdia1, selOptdia2, selOptdia3, selOptdia4, selOptdia5, selOptdia6, selOptdia7]
         }
-
-        console.log('payload', payload)
 
         try {
             const response = await fetch(urlDiet, {
@@ -120,8 +115,6 @@ function UpdatePlan (){
             console.log(error)
             
         }
-
-
     }
 
     

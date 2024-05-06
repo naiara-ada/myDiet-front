@@ -14,7 +14,7 @@ function Header ({id}){
                     <button><Link className='linkClass' to={`/user/${id}/mytracking`}>Mi Seguimiento</Link></button>
                     <button><Link  className='linkClass' to={`/user/${id}/myagenda`}>Mi Agenda</Link></button>
                     <button><Link  className='linkClass' to='/'>LogOut</Link></button>
-                    <button onClick={()=> navigate(-1)}>Volver</button>
+                    <button className='btnLink' onClick={()=> navigate(-1)}>Volver</button>
                 </nav>
             )}
             </div>
