@@ -33,6 +33,8 @@ function UpdatePlan (){
         const resData = await fetchData(token, urlDiet)
         const urlDiary = import.meta.env.VITE_URL+'dashboard/diaries'
         const resDiary = await fetchData(token, urlDiary);
+        console.log('resdata', resData)
+        console.log('resdiary', resDiary)
 
         if (resData && resDiary){
             setNombre(resData[0].nombrePlan);

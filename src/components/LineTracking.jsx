@@ -55,15 +55,15 @@ function LineTracking ({item}){
             {itemId !== null && (
                 <div className='containerTracking'>
                 <input type='text' value={itemId} ref={idRef} readOnly style={{width: '20px'}}/>
-                <input type='text' style={{width: '175px'}}
+                <input type='text' style={{width: '150px'}}
                     value={descripcion} 
                     ref={descripcionRef} 
                     onChange={(e)=>setDescripcion(e.target.value)}/>
-                <input type='date' style={{width: '90px'}}
+                <input type='date' style={{width: '95px'}}
                     value={fecha} 
                     ref={fechaRef} 
                     onChange={(e)=>setFecha(e.target.value)}/>
-                <input type='time' style={{width: '50px'}}
+                <input type='time' style={{width: '70px'}}
                     value={hora} 
                     ref={horaRef} 
                     onChange={(e)=>setHora(e.target.value)}/>
