@@ -123,11 +123,11 @@ function UpdatePlan (){
     return(
         <>
             <HeaderAdmin />
+            <div className="containerAgenda">
             <h2>Actualizar Plan Dietético</h2>                  
 
             {data !== null && (
-                 <div className="containerHome">
-                <form onSubmit={handleSubmit} className="formClass">
+                <form onSubmit={handleSubmit} className="formClass containerHome">
                 <div className="formRow">
                     <label className="labelform">Nombre:</label>
                     <input
@@ -214,12 +214,12 @@ function UpdatePlan (){
                 </div>              
                 
                 
-                <button type='submit'>Actualizar</button>                
+                <button className='btnLink form' type='submit'>Actualizar</button>                
             </form>
 
-            </div>
+        
             )}
-           
+           </div>
             </>
         )
     

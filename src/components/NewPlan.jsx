@@ -1,13 +1,12 @@
 import { useState, useEffect } from "react";
 import HeaderAdmin from "./HeaderAdmin";
-import { useParams, Link } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { useDiet } from "../context/DietContext.jsx";
 import {fetchData} from '../middleware/middleware.js';
 
 
 function NewPlan (){
     const {token} = useDiet();
-    console.log('token alldietary', token)
     const {id} = useParams();
     const [data, setData] = useState(null);
     const [nombre, setNombre] = useState('');
@@ -27,6 +26,7 @@ function NewPlan (){
     const [selOptdia6, setSelOptdia6] = useState(null);
     const [optdia7, setOptdia7] = useState([]);
     const [selOptdia7, setSelOptdia7] = useState(null);
+    const navigate = useNavigate();
 
 
     
@@ -34,7 +34,6 @@ function NewPlan (){
     const callFetchData = async () =>{
         const urlDiet = import.meta.env.VITE_URL+'dashboard/diaries'
         const resData = await fetchData(token, urlDiet);
-        console.log('resData getDiaries', resData)
         if (resData){
             setOptdia1(resData.map(item => ({
                 id: item.id,
@@ -90,9 +89,7 @@ function NewPlan (){
             dias:[selOptdia1, selOptdia2, selOptdia3, selOptdia4, selOptdia5, selOptdia6, selOptdia7]
         }
 
-        console.log('payload', payload)
-
-        try {
+         try {
             const response = await fetch(urlPlan, {
                 method: 'POST',
                 headers:{
@@ -103,7 +100,7 @@ function NewPlan (){
             })
               
             if(response.ok){
-                console.log('ok')
+                navigate(-1)
             }            
         } catch (error) {
             console.log(error)
@@ -116,11 +113,12 @@ function NewPlan (){
    return (
    <>
         <HeaderAdmin />
-        <h1>Nuevo Plan</h1>
+        <div className="containerAgenda">
+        <h2>Nuevo Plan</h2>
         {data !== null && (
-            <form onSubmit={handleSubmit} className="formClass">
+            <form onSubmit={handleSubmit} className="formClass containerHome">
             <div className="formRow">
-                <label>Nombre:</label>
+                <label className="labelform">Nombre:</label>
                 <input
                     type='text'
                     value={nombre}
@@ -129,7 +127,7 @@ function NewPlan (){
                 </input>
             </div>
             <div className="formRow">
-                <label>Descripción:</label>
+                <label className="labelform">Descripción:</label>
                 <input
                     type='text'
                     value={descripcion}
@@ -138,7 +136,7 @@ function NewPlan (){
                 </input>
             </div>
             <div className="formRow">
-                <label>Fecha:</label>
+                <label className="labelform">Fecha:</label>
                 <input
                     type='date'
                     value={fecha}
@@ -148,7 +146,7 @@ function NewPlan (){
             </div>
 
             <div className="formRow">
-                <label>Dia1:</label>
+                <label className="labelform">Dia1:</label>
                 <select value={selOptdia1} onChange={(e)=> setSelOptdia1(e.target.value)}>
                     {optdia1.map(option => (
                         <option key={option.id} value={option.id}>{option.titulo}</option>
@@ -156,7 +154,7 @@ function NewPlan (){
                 </select>
             </div>
             <div className="formRow">
-                <label>Dia2:</label>
+                <label className="labelform">Dia2:</label>
                 <select value={selOptdia2} onChange={(e)=> setSelOptdia2(e.target.value)}>
                     {optdia2.map(option => (
                         <option key={option.id} value={option.id}>{option.titulo}</option>
@@ -164,7 +162,7 @@ function NewPlan (){
                 </select>
             </div> 
             <div className="formRow">
-                <label>Dia3:</label>
+                <label className="labelform">Dia3:</label>
                 <select value={selOptdia3} onChange={(e)=> setSelOptdia3(e.target.value)}>
                     {optdia3.map(option => (
                         <option key={option.id} value={option.id}>{option.titulo}</option>
@@ -172,7 +170,7 @@ function NewPlan (){
                 </select>
             </div>
             <div className="formRow">
-                <label>Dia4:</label>
+                <label className="labelform">Dia4:</label>
                 <select value={selOptdia4} onChange={(e)=> setSelOptdia4(e.target.value)}>
                     {optdia4.map(option => (
                         <option key={option.id} value={option.id}>{option.titulo}</option>
@@ -180,7 +178,7 @@ function NewPlan (){
                 </select>
             </div>
             <div className="formRow">
-                <label>Dia5:</label>
+                <label className="labelform">Dia5:</label>
                 <select value={selOptdia5} onChange={(e)=> setSelOptdia5(e.target.value)}>
                     {optdia5.map(option => (
                         <option key={option.id} value={option.id}>{option.titulo}</option>
@@ -188,7 +186,7 @@ function NewPlan (){
                 </select>
             </div>
             <div className="formRow">
-                <label>Dia6:</label>
+                <label className="labelform">Dia6:</label>
                 <select value={selOptdia6} onChange={(e)=> setSelOptdia6(e.target.value)}>
                     {optdia6.map(option => (
                         <option key={option.id} value={option.id}>{option.titulo}</option>
@@ -196,7 +194,7 @@ function NewPlan (){
                 </select>
             </div> 
             <div className="formRow">
-                <label>Dia7:</label>
+                <label className="labelform">Dia7:</label>
                 <select value={selOptdia7} onChange={(e)=> setSelOptdia7(e.target.value)}>
                     {optdia7.map(option => (
                         <option key={option.id} value={option.id}>{option.titulo}</option>
@@ -211,7 +209,7 @@ function NewPlan (){
 
         )}
         
-
+        </div>
     
     </>)
 }

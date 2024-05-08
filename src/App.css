@@ -121,7 +121,9 @@ box-shadow: 10px 10px 15px -3px rgba(25,71,97,1);
 
 .formRow{
   display: flex;
+  justify-content: space-between;
   gap: 10px;
+  
 }
 
 .containerTracking{
@@ -272,7 +274,7 @@ box-shadow: 10px 10px 15px -3px rgba(25,71,97,1);
   background: none;
   background-image: none;
   border: 1px solid #8ecceb;
-  padding: 5px 10px;
+  padding: 0px 0px;
   border-radius: 15px;
   line-height: normal;
   white-space: nowrap;

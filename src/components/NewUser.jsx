@@ -3,6 +3,7 @@ import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from '../config/firebase.js';
 import { useDiet } from "../context/DietContext.jsx";
 import { useNavigate } from "react-router-dom";
+import HeaderAdmin from "./HeaderAdmin.jsx";
 
 function NewUser (){
     const {token} = useDiet();
@@ -11,7 +12,7 @@ function NewUser (){
     const [correo, setCorreo] = useState('');
     const [password, setPassword] = useState('');
     const navigate = useNavigate();
-    const urlAdmin = 'http://localhost:3000/dashboard/users/newuser'
+    const urlAdmin = import.meta.env.VITE_URL+'dashboard/users/newuser'
 
     const handleSubmit = async (e)=>{
         e.preventDefault()
@@ -19,7 +20,7 @@ function NewUser (){
         try {
             const userCredential = await createUserWithEmailAndPassword(auth, correo, password)
             const user = userCredential.user
-            console.log(user)
+            
             if (user){
                 const payload ={
                     Nombre: nombre,
@@ -38,8 +39,7 @@ function NewUser (){
                 })
                 if(response.ok) {
                     const data = await response.json()
-                    console.log(data)
-                    navigate('/dashboard/users')
+                    navigate(-1)
                   } 
 
             }
@@ -52,38 +52,42 @@ function NewUser (){
 
     return(
         <>
-         <h1>Nuevo usuario</h1>
-         <form onSubmit={handleSubmit}>
-            <label>Nombre</label>
+        <HeaderAdmin />
+        <div className="containerAgenda">
+         <h2>Nuevo usuario</h2>
+         <form onSubmit={handleSubmit} className="formClass containerHome">
+            <label  className="labelform">Nombre</label>
             <input 
                 type='text'
                 value={nombre}
                 onChange={(e)=> setNombre(e.target.value)}
                 required
             />
-            <label>Apellido</label>
+            <label className="labelform">Apellido</label>
             <input 
                 type='text'
                 value={apellido}
                 onChange={(e)=> setApellido(e.target.value)}
                 required
             />
-            <label>Correo</label>
+            <label className="labelform">Correo</label>
             <input 
                 type='email'
                 value={correo}
                 onChange={(e)=> setCorreo(e.target.value)}
                 required
             />
-            <label>Contraseña</label>
+            <label className="labelform">Contraseña</label>
             <input 
                 type='password'
                 value={password}
                 onChange={(e)=> setPassword(e.target.value)}
                 required
             />
-            <button type='submit'>Añadir</button>
+            <button className='btnLink form' type='submit'>Añadir</button>
          </form>
+         </div>
+         
         </>
     )
 }

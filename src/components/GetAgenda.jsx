@@ -14,7 +14,7 @@ function GetAgenda (){
 
     const callFetchData = async () =>{
         const resData = await fetchData(token, urlDiet);
-        console.log(resData)
+        
         //preparamos los eventos para poder enviarlos al calendario
         
         setEvents( resData.map(item => (
